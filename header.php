@@ -9,29 +9,17 @@
  * @subpackage Templates
  */
  
-	// Create doctype
-	prism_create_doctype();
-	echo " ";
-	language_attributes();
-	echo ">\n";
-	
+// Create doctype
+prism_create_doctype();
+
+// Create the <html> tag with language attributes
+prism_create_html();
+
 	// Opens the head tag 
 	prism_head_profile();
-	
-	// Create the meta content type
-	prism_create_contenttype();
-	
-	// Create the title tag 
-	prism_doctitle();
-	
-	// Create the meta description
-	prism_show_description();
-	
-	// Create the tag <meta name="robots"  
-	prism_show_robots();
-	
-	// Create pingback adress
-	prism_show_pingback();
+		
+	// Action hook for header meta 
+	prism_head();
 	
 	/* The function wp_head() loads Prism's stylesheet and scripts.
 	 * Calling wp_head() is required to provide plugins and child themes
