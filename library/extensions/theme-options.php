@@ -29,18 +29,11 @@ if (function_exists('childtheme_override_opt_init')) {
 
 		// Retrieve current options from database	
 		$current_options = prism_get_wp_opt('prism_theme_opt');
-		$legacy_options = prism_convert_legacy_opt();
 		
 		// If no current settings exist
 		if ( false === $current_options )  {
-			// Check for legacy options
-			if ( false !== ( $legacy_options ) )  {
-				// Theme upgrade: Convert legacy to current format and add to database 
-				add_option( 'prism_theme_opt', $legacy_options );
-			} else {
-				// Fresh theme installation: Add default settings to database
-				add_option( 'prism_theme_opt', prism_default_opt() );
-			}
+			// Fresh theme installation: Add default settings to database
+			add_option( 'prism_theme_opt', prism_default_opt() );
 		}
 
 		register_setting ('prism_opt_group', 'prism_theme_opt', 'prism_validate_opt');
@@ -50,11 +43,6 @@ if (function_exists('childtheme_override_opt_init')) {
 		add_settings_field ('prism_insert_opt', __('Index Insert Position', 'prism')	, 'prism_do_insert_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
 		add_settings_field ('prism_auth_opt',   __('Info on Author Page'	, 'prism')	, 'prism_do_auth_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
 		add_settings_field ('prism_footer_opt', __('Text in Footer'	, 'prism')		, 'prism_do_footer_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
-		
-		// Show checkbox option for removing old options from database
-		if ( isset( $legacy_options ) && false !== $legacy_options ) {
-			add_settings_field ('prism_legacy_opt', __('Remove Legacy Options'	, 'prism'), 'prism_do_legacy_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
-		} 
 	
 	}
 }
@@ -106,33 +94,6 @@ function prism_get_theme_opt( $opt_key, $echo = false ) {
 }
 
 
-/**
- * Retrieves legacy Prism options from database
- * Returns theme as a sanitized array or false
- *
- * @uses prism_theme_convert_legacy_opt
- * 
- * @since Prism 1.0
- */
-function prism_convert_legacy_opt() {
-    $thm_insert_position = prism_get_wp_opt( 'thm_insert_position' );
-    $thm_authorinfo = prism_get_wp_opt( 'thm_authorinfo' );
-    $thm_footertext = prism_get_wp_opt( 'thm_footertext' );
-    
-    // Return false if no options found
-    if ( false === $thm_insert_position && false === $thm_authorinfo && false === $thm_footertext )
-    	return false; 
-    	
-    // Return a sanitized array from legacy options if found
-    $legacy_sanitized_opt = array(
-    		'index_insert' 	=> intval( $thm_insert_position ),
-    		'author_info'  	=> ( $thm_authorinfo == "true" ) ? 1 : 0,
-    		'footer_txt' 	=> wp_kses_post( $thm_footertext ),
-    		'del_legacy_opt'=> 0
-    	);
-
-    return apply_filters( 'prism_theme_convert_legacy_opt', $legacy_sanitized_opt );
-}
 
 /**
  * Returns default theme options.
@@ -146,8 +107,7 @@ function prism_default_opt() {
 	$prism_default_opt = array(
 		'index_insert' 	=> 2,
 		'author_info'  	=> 0, // 0 = not checked 1 = checked
-		'footer_txt' 	=> 'Powered by [wp-link]. Built on the [theme-link].',
-		'del_legacy_opt'=> 0  // 0 = not checked 1 = check
+		'footer_txt' 	=> 'Powered by [wp-link]. Built on the [theme-link].'
 	);
 
 	return apply_filters( 'prism_theme_default_opt', $prism_default_opt );
@@ -212,37 +172,12 @@ if (function_exists('childtheme_override_opt_page_help')) {
 		
 		$help = apply_filters ( 'prism_theme_opt_help_txt', $help );
 	
-        if ( method_exists( $screen, 'add_help_tab' ) ) {
-        	// WordPress 3.3
-			$screen->add_help_tab( array( 'title' => __( 'Overview', 'prism' ), 'id' => 'theme-opt-help', 'content' => $help, ) );
-			$screen->set_help_sidebar( $sidebar );
+		$screen->add_help_tab( array( 'title' => __( 'Overview', 'prism' ), 'id' => 'theme-opt-help', 'content' => $help, ) );
+		$screen->set_help_sidebar( $sidebar );
                         
-			} else {
-             	prism_legacy_help();
-           	}
         }
 }
 
-/**
- * Adds a settings section to display legacy help text and theme links
- *
- * @since Prism 1.0
- * @todo remove Legacy help when two point relases of WP have occurred after 3.3
- */
-function prism_legacy_help() {
-        add_settings_section ('prism_opt_help_section', '', 'prism_do_legacy_help_section', 'prism_opt_page');
-}
-
-
-/**
- * Renders the legacy help text and theme links
- * 
- * @since Prism 1.0
- * @todo remove Legacy help when two point relases of WP have occurred after 3.3
- */
-function prism_do_legacy_help_section() { 
-    echo '<p>'. sprintf ( _x( 'For more information about this theme, %1$svisit PrismTheme.com%2$s', '%1$s and %2$s are <a> tags', 'prism') , '<a href="http://themeprism.com">', '</a>') . ' ' . sprintf ( _x( 'Please visit the %1$sPrismTheme.com Forums%2$s if you have any questions about Prism.', '%1$s and %2$s are <a> tags', 'prism'), '<a href="http://themeprism.com/forums/">', '</a>' ) .'</p>' ;
-}
 
 /**
  * Renders the them options page
@@ -333,29 +268,6 @@ function prism_do_footer_opt() {
 }
 
 
-/**
- * Renders Leagcy Options elements
- *
- * @since Prism 1.0
- * @todo: remove get_current_theme()
- */
-function prism_do_legacy_opt() {
-?>
-	<input id="thm_legacy_opt" type="checkbox" value="1" name="prism_theme_opt[del_legacy_opt]"  <?php checked( prism_get_theme_opt('del_legacy_opt'), 1 ); ?> />
-
-	<?php 
-	if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme();
-        $theme = $frameworkData->display( 'Name', false );
- 	} else {
- 		$theme = get_current_theme();
- 	} 
- 	?>
-
-	<label for="thm_legacy_opt"><?php printf( _x( '%s Theme Options have been upgraded to an improved format. Remove the legacy options from the database.', '{$current theme} Theme Options', 'prism' ), $theme ); ?></label>
-<?php
-}
-
 
 /**
  * Validates theme options form post data.
@@ -397,20 +309,6 @@ if (function_exists('childtheme_override_validate_opt')) {
  	   	$output['footer_txt'] = wp_kses_post( $input['footer_txt'] ) ;	
  	   }
  	   
- 	   // Remove Legacy Options CheckBox value either 1(yes) or 0(no)
- 	   if ( isset( $input['del_legacy_opt'] ) ) {
- 	   	$output['del_legacy_opt'] = ( $input['del_legacy_opt'] == 0 ? 0 : 1 );
- 	   }
- 	   
- 	   if ( 1 == $output['del_legacy_opt'] ) {
- 	   	
- 	   	// Remove options if the choice is yes
- 	   	delete_option('thm_insert_position');
- 	   	delete_option('thm_authorinfo');
- 	   	delete_option('thm_footertext');
- 	   	
- 	   	// Reset checkbox value to unchecked in case a legacy set of options is ever saved to database again
- 	   	$output['del_legacy_opt'] = 0;
  	   }
  	   	
  	   return apply_filters( 'prism_theme_opt_validation', $output, $input );
