@@ -1,0 +1,38 @@
+/*   
+Theme Name: A Prism Child Theme
+Theme URI: http://themeprism.com/
+Description: Use this theme to start your Prism Child Theme development.
+Author: <a href="http://kathyisawesome.com/">Kathy Darling</a> &amp; <a href="http://virtualpudding.com/">Jonny Janeiro</a>
+Author URI: http://themeprism.com/
+Template: prism
+Version: 1.0
+Tags: white, three-columns, two-columns, fixed-width, theme-options, left-sidebar, right-sidebar, threaded-comments, sticky-post, microformats
+License: GNU General Public License v2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+.
+This work, like WordPress, is released under GNU General Public License, version 2 (GPL).
+.
+
+*/
+
+/* Reset browser defaults */
+@import url('../prism/library/styles/reset.css');
+
+/* Apply basic typography styles */
+@import url('../prism/library/styles/typography.css');
+
+/* Apply a basic layout */
+@import url('../prism/library/layouts/2c-r-fixed.css');
+
+/* Apply basic image styles */
+@import url('../prism/library/styles/images.css');
+
+/* Apply default theme styles and colors */
+/* It's better to actually copy over default.css into this file (or link to a copy in your child theme) if you're going to do anything outrageous */
+@import url('../prism/library/styles/default.css');
+
+/* Prepare theme for plugins */
+@import url('../prism/library/styles/plugins.css');
+
+
