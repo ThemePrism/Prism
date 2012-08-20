@@ -75,13 +75,8 @@ add_shortcode('the-year', 'prism_shortcode_year');
  * Display the name of the parent theme.
  */
 function prism_shortcode_theme_name() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme( 'prism' );
-        return $frameworkData->display( 'Name', false );
-    } else { 
-        $frameworkData = get_theme_data(  get_template_directory() . '/style.css' );
-        return $frameworkData['Title'];
-    }
+    $frameworkData = wp_get_theme( 'prism' );
+    return $frameworkData->display( 'Name', false );
 }
 add_shortcode('theme-name', 'prism_shortcode_theme_name');
 
@@ -90,13 +85,8 @@ add_shortcode('theme-name', 'prism_shortcode_theme_name');
  * Display the name of the parent theme author.
  */
 function prism_shortcode_theme_author() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme( 'prism' );
-        return $frameworkData->display( 'Author', false );
-    } else { 
-        $frameworkData = get_theme_data(  get_template_directory() . '/style.css' );
-        return $frameworkData['Author'];
-    }
+    $frameworkData = wp_get_theme( 'prism' );
+    return $frameworkData->display( 'Author', false );
 }
 add_shortcode('theme-author', 'prism_shortcode_theme_author');
 
@@ -105,13 +95,8 @@ add_shortcode('theme-author', 'prism_shortcode_theme_author');
  * Display the URI of the parent theme.
  */
 function prism_shortcode_theme_uri() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme( 'prism' );
-        return $frameworkData->display( 'ThemeURI', false );
-    } else { 
-        $frameworkData = get_theme_data(  get_template_directory() . '/style.css' );
-        return $frameworkData['URI'];
-    }
+    $frameworkData = wp_get_theme( 'prism' );
+    return $frameworkData->display( 'ThemeURI', false );
 }
 add_shortcode('theme-uri', 'prism_shortcode_theme_uri');
 
@@ -120,13 +105,8 @@ add_shortcode('theme-uri', 'prism_shortcode_theme_uri');
  * Display the version no. of the parent theme.
  */
 function prism_shortcode_theme_version() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme( 'prism' );
-        return trim( $frameworkData->display('Version', false));
-    } else { 
-        $frameworkData = get_theme_data(  get_template_directory() . '/style.css' );
-        return trim( $frameworkData['Version'] );
-    }
+    $frameworkData = wp_get_theme( 'prism' );
+    return trim( $frameworkData->display('Version', false));
 }
 add_shortcode('theme-version', 'prism_shortcode_theme_version');
 
@@ -136,13 +116,8 @@ add_shortcode('theme-version', 'prism_shortcode_theme_version');
  * Display the name of the child theme.
  */
 function prism_shortcode_child_name() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme();
-        return $frameworkData->display( 'Name', false );
-    } else { 
-        $frameworkData = get_theme_data( get_stylesheet_directory() . '/style.css' );
-        return $frameworkData['Title'];
-    }
+    $frameworkData = wp_get_theme();
+    return $frameworkData->display( 'Name', false );
 }
 add_shortcode('child-name', 'prism_shortcode_child_name');
 
@@ -151,13 +126,8 @@ add_shortcode('child-name', 'prism_shortcode_child_name');
  * Display the name of the child theme author.
  */
 function prism_shortcode_child_author() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme();
-        return $frameworkData->display( 'Author', false );
-    } else { 
-        $frameworkData = get_theme_data( get_stylesheet_directory() . '/style.css' );
-        return $frameworkData['Author'];
-    }
+    $frameworkData = wp_get_theme();
+    return $frameworkData->display( 'Author', false );
 }
 add_shortcode('child-author', 'prism_shortcode_child_author');
 
@@ -166,13 +136,8 @@ add_shortcode('child-author', 'prism_shortcode_child_author');
  * Display the URI of the child theme.
  */
 function prism_shortcode_child_uri() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme();
-        return $frameworkData->display( 'ThemeURI', false );
-    } else { 
-        $frameworkData = get_theme_data( get_stylesheet_directory() . '/style.css' );
-        return $frameworkData['URI'];
-    }
+    $frameworkData = wp_get_theme();
+    return $frameworkData->display( 'ThemeURI', false );
 }
 add_shortcode('child-uri', 'prism_shortcode_child_uri');
 
@@ -182,12 +147,7 @@ add_shortcode('child-uri', 'prism_shortcode_child_uri');
  * 
  */
 function prism_shortcode_child_version() {
-    if ( function_exists( 'wp_get_theme' ) ) {
-        $frameworkData = wp_get_theme();
-        return trim( $frameworkData->display('Version', false));
-    } else { 
-        $frameworkData = get_theme_data( get_stylesheet_directory() . '/style.css' );
-        return trim( $frameworkData['Version'] );
-    }
+    $frameworkData = wp_get_theme();
+    return trim( $frameworkData->display('Version', false));
 }
 add_shortcode('child-version', 'prism_shortcode_child_version');
