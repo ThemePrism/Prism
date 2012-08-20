@@ -100,12 +100,9 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 		add_filter( 'archive_meta', 'convert_chars' );
 		add_filter( 'archive_meta', 'wpautop' );
 
-		// Remove the WordPress Generator - via http://blog.ftwr.co.uk/archives/2007/10/06/improving-the-wordpress-generator/
-		function prism_remove_generators() {
- 			return '';
- 		}
+		// Remove the WordPress Generator
  		if ( apply_filters( 'prism_hide_generators', true ) )
- 			add_filter( 'the_generator', 'prism_remove_generators' );
+ 			add_filter( 'the_generator', '__return_false' );
  
 		// Translate, if applicable
 		load_theme_textdomain( 'prism', PRISM_LIB . '/languages' );
