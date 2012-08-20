@@ -76,9 +76,6 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 
 		// Create Theme Options Page
 		require_once ( PRISM_LIB . '/extensions/theme-options.php' );
-		
-		// Load legacy functions
-		require_once ( PRISM_LIB . '/legacy/deprecated.php' );
 
 		// Load widgets
 		require_once ( PRISM_LIB . '/extensions/widgets.php' );
