@@ -28,7 +28,7 @@ add_shortcode('wp-link', 'prism_shortcode_wp_link');
  * Display link to Prism.
  */
 function prism_shortcode_framework_link() {
-    $themelink = '<a class="theme-link" href="http://prismtheme.com" title="Prism Theme Framework" rel="home">Prism Theme Framework</a>';
+    $themelink = '<a class="theme-link" href="http://themeprism.com" title="Prism Theme Framework" rel="home">Prism Theme Framework</a>';
     return apply_filters('prism_theme_link',$themelink);
 }
 add_shortcode('theme-link', 'prism_shortcode_framework_link');	
