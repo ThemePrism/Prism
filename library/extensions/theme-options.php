@@ -308,9 +308,7 @@ if (function_exists('childtheme_override_validate_opt')) {
  	   if ( isset( $input['footer_txt'] ) ) {
  	   	$output['footer_txt'] = wp_kses_post( $input['footer_txt'] ) ;	
  	   }
- 	   
- 	   }
- 	   	
+ 	   	   	
  	   return apply_filters( 'prism_theme_opt_validation', $output, $input );
  	}
 } 
