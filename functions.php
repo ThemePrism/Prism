@@ -61,10 +61,6 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 			$content_width = 540;
 
 		// Legacy post class handling - @to be removed eventually
-		// If you add theme support for prism_legacy_post_class, Prism will use prism_body_class instead of post_class()
-		if ( defined( 'PRISM_COMPATIBLE_POST_CLASS' ) ) add_theme_support( 'prism_legacy_post_class' );
-
-		// Legacy post class handling - @to be removed eventually
 		// If you add theme support for prism_legacy_post_class, Prism will use it's legacy comment form
 		if ( defined( 'PRISM_COMPATIBLE_COMMENT_FORM' ) ) add_theme_support( 'prism_legacy_comment_form' );
 
