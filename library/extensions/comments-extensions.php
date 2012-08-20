@@ -281,15 +281,8 @@ function prism_comments_template() {
  *  Outputs the standard comments template
  */
 function prism_include_comments() {
-	// Checking for defined constant to enable conditional comment display for Pages
-    if (  current_theme_supports( 'prism_legacy_comment_handling' ) && is_page() ) {
-    	// Needs post-meta key/value of "comments" to call comments template on Pages!
-       	if ( get_post_custom_values('comments') )
-			comments_template('', true);	    	
-	// WordPress standard comment handling is the default if constant is not set
-	} else {
-		comments_template('', true);
-	}
+	comments_template('', true);
+
 }
 
 add_action('prism_comments_template','prism_include_comments', 5);
