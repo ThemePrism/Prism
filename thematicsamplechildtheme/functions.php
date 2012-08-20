@@ -6,8 +6,7 @@
  * to allow this Child theme to be activated in the Appearance - Themes section of the WP-Admin.
  *
  * Included is a basic theme setup that will add support for custom header images and custom 
- * backgrounds. There are also a set of commented theme supports that can be uncommented if you need
- * them for backwards compatibility. If you are starting a new theme, these legacy functionality can be deleted.  
+ * backgrounds.  
  *
  * More ideas can be found in the community documentation for Prism
  * @link http://docs.themeprism.com
