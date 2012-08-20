@@ -8,7 +8,6 @@
  * @subpackage Templates
  *
  * @todo chase the invalid counts & pagination for comments/trackbacks
- * @todo remove the PRISM_COMPATIBLE_COMMENT_FORM condition to a legacy function for template berevity
  */
 ?>
 				<?php
