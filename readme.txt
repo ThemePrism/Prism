@@ -1,7 +1,7 @@
 === Prism ===
 Contributors: helgatheviking, Virtual Pudding
 Tags: white, three-columns, two-columns, fixed-width, theme-options, left-sidebar, right-sidebar, threaded-comments, sticky-post, microformats
-Requires at least: 3.2
+Requires at least: 3.4
 Tested up to: 3.4
 Stable tag: 1.0.3
 
