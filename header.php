@@ -30,15 +30,6 @@
 	// Create the tag <meta name="robots"  
 	prism_show_robots();
 	
-	// Legacy feedlink handling
-	if ( current_theme_supports( 'prism_legacy_feedlinks' ) ) {    
-		// Creating the internal RSS links
-		prism_show_rss();
-	
-		// Create comments RSS links
-		prism_show_commentsrss();
-	}
-	
 	// Create pingback adress
 	prism_show_pingback();
 	

@@ -300,53 +300,6 @@ function prism_show_robots() {
     }
 } // end prism_show_robots
 
-/**
- * Display links to RSS feed
- * 
- * This can be switched on or off using prism_show_rss. Default: ON
- * 
- * Filter: prism_show_rss
- * Filter: prism_rss
- */
-function prism_show_rss() {
-    $display = TRUE;
-    $display = apply_filters('prism_show_rss', $display);
-    if ($display) {
-        $content = '<link rel="alternate" type="application/rss+xml" href="';
-        $content .= get_feed_link( get_default_feed() );
-        $content .= '" title="';
-        $content .= esc_attr( get_bloginfo('name', 'display') );
-        $content .= ' ' . __('Posts RSS feed', 'prism');
-        $content .= '" />';
-        $content .= "\n";
-        echo apply_filters('prism_rss', $content);
-    }
-}
-
-
-/**
- * Display links to RSS feed for comments
- * 
- * This can be switched on or off using prism_show_commentsrss. Default: ON
- * 
- * Filter: prism_show_commentsrss
- * Filter: prism_commentsrss
- */
-function prism_show_commentsrss() {
-    $display = TRUE;
-    $display = apply_filters('prism_show_commentsrss', $display);
-    if ($display) {
-        $content = '<link rel="alternate" type="application/rss+xml" href="';
-        $content .= get_feed_link( 'comments_' . get_default_feed() );
-        $content .= '" title="';
-        $content .= esc_attr( get_bloginfo('name') );
-        $content .= ' ' . __('Comments RSS feed', 'prism');
-        $content .= '" />';
-        $content .= "\n";
-        echo apply_filters('prism_commentsrss', $content);
-    }
-}
-
 
 /**
  * Display pingback link

@@ -59,10 +59,6 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 		 */
 		if ( !isset($content_width) )
 			$content_width = 540;
-   
-		// Legacy feed links handling - @to be removed eventually
-		// If you add theme support for prism_legacy_feedlinks, prism_show_rss() and prism_show_commentsrss() are used instead of add_theme_support( 'automatic-feed-links' )
-		if ( defined( 'PRISM_COMPATIBLE_FEEDLINKS' ) ) add_theme_support( 'prism_legacy_feedlinks' );
 
 		// Legacy comments handling for pages, archives and links
 		// If you add_theme_support for prism_legacy_comment_handling, Prism will only show comments on pages with a key/value of "comments"
@@ -84,8 +80,7 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 		define( 'PRISM_MB', is_multisite()  );
 
 		// Create the feedlinks
-		if ( ! current_theme_supports( 'prism_legacy_feedlinks' ) )
- 			add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'automatic-feed-links' );
  
 		if ( apply_filters( 'prism_post_thumbs', true ) )
 			add_theme_support( 'post-thumbnails' );
