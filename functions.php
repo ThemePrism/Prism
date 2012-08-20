@@ -110,10 +110,6 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 		// Translate, if applicable
 		load_theme_textdomain( 'prism', PRISM_LIB . '/languages' );
 
-		$locale = get_locale();
-		$locale_file = PRISM_LIB . "/languages/$locale.php";
-		if ( is_readable($locale_file) )
-			require_once ($locale_file);
 	}
 }
 
