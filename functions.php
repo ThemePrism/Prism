@@ -74,44 +74,25 @@ if ( function_exists('childtheme_override_theme_setup') ) {
 		// Path constants
 		define( 'PRISM_LIB',  get_template_directory() .  '/library' );
 
-		// Create Theme Options Page
-		require_once ( PRISM_LIB . '/extensions/theme-options.php' );
+		// Load required files
+		$required = array ( '/extensions/theme-options.php', // Create Theme Options Page
+							'/extensions/widgets.php', // Load widgets 
+							'/extensions/header-extensions.php', // Load custom header extensions
+							'/extensions/content-extensions.php',  // Load custom content filters
+							'/extensions/comments-extensions.php',  // Load custom Comments filters
+							'/extensions/discussion-extensions.php',  // Load custom discussion filters
+							'/extensions/widgets-extensions.php',  // Load custom Widgets
+							'/extensions/discussion.php',  // Load the Comments Template functions and callbacks
+							'/extensions/sidebar-extensions.php',  // Load custom sidebar hooks
+							'/extensions/footer-extensions.php',  // Load custom footer hooks
+							'/extensions/dynamic-classes.php',  // Add Dynamic Contextual Semantic Classes
+							'/extensions/helpers.php',  // Need a little help from our helper functions
+							'/extensions/shortcodes.php'  // Load shortcodes
+							);
 
-		// Load widgets
-		require_once ( PRISM_LIB . '/extensions/widgets.php' );
-
-		// Load custom header extensions
-		require_once ( PRISM_LIB . '/extensions/header-extensions.php' );
-
-		// Load custom content filters
-		require_once ( PRISM_LIB . '/extensions/content-extensions.php' );
-
-		// Load custom Comments filters
-		require_once ( PRISM_LIB . '/extensions/comments-extensions.php' );
-
-		// Load custom discussion filters
-		require_once ( PRISM_LIB . '/extensions/discussion-extensions.php' );
-
-		// Load custom Widgets
-		require_once ( PRISM_LIB . '/extensions/widgets-extensions.php' );
-
-		// Load the Comments Template functions and callbacks
-		require_once ( PRISM_LIB . '/extensions/discussion.php' );
-
-		// Load custom sidebar hooks
-		require_once ( PRISM_LIB . '/extensions/sidebar-extensions.php' );
-
-		// Load custom footer hooks
-		require_once ( PRISM_LIB . '/extensions/footer-extensions.php' );
-
-		// Add Dynamic Contextual Semantic Classes
-		require_once ( PRISM_LIB . '/extensions/dynamic-classes.php' );
-
-		// Need a little help from our helper functions
-		require_once ( PRISM_LIB . '/extensions/helpers.php' );
-
-		// Load shortcodes
-		require_once ( PRISM_LIB . '/extensions/shortcodes.php' );
+		foreach ( $required as $require ) {
+			require_once ( PRISM_LIB . $require );
+		}
 
 		// Adds filters for the description/meta content in archive templates
 		add_filter( 'archive_meta', 'wptexturize' );
