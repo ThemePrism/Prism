@@ -299,7 +299,8 @@ function prism_primary_aside() {
 		echo prism_before_widget_area( 'primary-aside' );
 		dynamic_sidebar( 'primary-aside' );
 		echo prism_after_widget_area( 'primary-aside' );
-	} elseif ( $wp_customize->is_preview()  ){ 
+	// WordPress 3.4
+	} elseif ( method_exists ( $wp_customize,'is_preview' ) && $wp_customize->is_preview()  ){ 
 		echo prism_before_widget_area( 'primary-aside' );
 		the_widget('Prism_Widget_Search', null , $args);
 		the_widget('WP_Widget_Pages', null , $args);
@@ -326,7 +327,8 @@ function prism_secondary_aside() {
 		echo prism_before_widget_area( 'secondary-aside' );
 		dynamic_sidebar( 'secondary-aside' );
 		echo prism_after_widget_area( 'secondary-aside' );
-	} elseif ( $wp_customize->is_preview() ){ 
+	// WordPress 3.4
+	} elseif ( method_exists ( $wp_customize,'is_preview' ) && $wp_customize->is_preview()  ){ 
 		echo prism_before_widget_area( 'secondary-aside' );
 		the_widget('Prism_Widget_RSS', null, $args);
 		the_widget('Prism_Widget_Meta', null, $args); 
