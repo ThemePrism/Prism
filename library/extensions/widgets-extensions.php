@@ -383,17 +383,17 @@ function prism_3rd_subsidiary_aside() {
 function prism_before_widget_area($hook) {
 	$content =  "\n\t\t";
 	if ( $hook == 'primary-aside' ) {
-		$content .= '<div id="primary" class="aside main-aside">' . "\n\n";
+		$content .= '<aside id="primary" class="aside main-aside">' . "\n\n";
 	} elseif ( $hook == 'secondary-aside' ) {
-		$content .= '<div id="secondary" class="aside main-aside">' . "\n\n";
+		$content .= '<aside id="secondary" class="aside main-aside">' . "\n\n";
 	} elseif ( $hook == '1st-subsidiary-aside' ) {
-		$content .= '<div id="first" class="aside sub-aside">' . "\n\n";
+		$content .= '<aside id="first" class="aside sub-aside">' . "\n\n";
 	} elseif ( $hook == '2nd-subsidiary-aside' ) {
-		$content .= '<div id="second" class="aside sub-aside">' . "\n\n";
+		$content .= '<aside id="second" class="aside sub-aside">' . "\n\n";
 	} elseif ( $hook == '3rd-subsidiary-aside' ) {
-		$content .= '<div id="third" class="aside sub-aside">' . "\n\n";
+		$content .= '<aside id="third" class="aside sub-aside">' . "\n\n";
 	} else {
-		$content .= '<div id="' . $hook . '" class="aside">' ."\n";
+		$content .= '<aside id="' . $hook . '" class="aside">' ."\n";
 	}
 	$content .= "\t\t\t" . '<ul class="xoxo">' . "\n\n\t\t\t\t";
 	return apply_filters( 'prism_before_widget_area', $content, $hook );
@@ -409,18 +409,20 @@ function prism_before_widget_area($hook) {
  */
 function prism_after_widget_area($hook) {
 	$content = "\n\t\t\t\t" . '</ul>' ."\n\n\t\t";
-	if ( $hook == 'primary-aside' ) {
-		$content .= '</div><!-- #primary .aside -->' ."\n\n";
+	if ( $hook == 'header-aside' ) {
+		$content .= '</aside><!-- #header .aside -->' ."\n\n";
+	} elseif ( $hook == 'primary-aside' ) {
+		$content .= '</aside><!-- #primary .aside -->' ."\n\n";
 	} elseif ( $hook == 'secondary-aside' ) {
-		$content .= '</div><!-- #secondary .aside -->' ."\n\n";
+		$content .= '</aside><!-- #secondary .aside -->' ."\n\n";
 	} elseif ( $hook == '1st-subsidiary-aside' ) {
-		$content .= '</div><!-- #first .aside -->' ."\n\n";
+		$content .= '</aside><!-- #first .aside -->' ."\n\n";
 	} elseif ( $hook == '2nd-subsidiary-aside' ) {
-		$content .= '</div><!-- #second .aside -->' ."\n\n";
+		$content .= '</aside><!-- #second .aside -->' ."\n\n";
 	} elseif ( $hook == '3rd-subsidiary-aside' ) {
-		$content .= '</div><!-- #third .aside -->' ."\n\n";
+		$content .= '</aside><!-- #third .aside -->' ."\n\n";
 	} else {
-		$content .= '</div><!-- #' . $hook . ' .aside -->' ."\n\n";
+		$content .= '</aside><!-- #' . $hook . ' .aside -->' ."\n\n";
 	} 
 	return apply_filters( 'prism_after_widget_area', $content, $hook );
 }
