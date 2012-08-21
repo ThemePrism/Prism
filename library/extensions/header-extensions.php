@@ -71,7 +71,6 @@ if ( ! function_exists( 'prism_create_contenttype' ) )  {
   /**
    * Display the META content-type
    *
-   * Override: prism_create_contenttype
    * Filter: prism_create_contenttype
    */
   function prism_create_contenttype() {
@@ -107,7 +106,6 @@ add_action('prism_head','prism_doctitle', 20);
  * Filters wp_title returning the doctitle contents
  * Located in header.php Credits: Tarski Theme
  * 
- * Override: prism_doctitle
  * Filter: prism_doctitle_separator
  * Filter: prism_doctitle
  *
@@ -373,7 +371,7 @@ if ( ! function_exists( 'prism_head_scripts' ) )  {
      * Adds comment reply and navigation menu scripts to the head of the document.
      *
      * Child themes should use wp_dequeue_scripts to remove individual scripts.
-     * Larger changes can be made using the override.
+     * Larger changes can be made using by replacing the pluggable function.
      *
      * For Reference: {@link http://users.tpg.com.au/j_birch/plugins/superfish/#getting-started Superfish Jquery Plugin}
      *

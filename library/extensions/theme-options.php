@@ -17,8 +17,6 @@ if ( ! function_exists( 'prism_opt_init' )) {
 	/**
 	 * Sets default options in database if not pre-existent.
 	 * Registers with WP settings API, adds a main section with three settings fields.
-	 * 
-	 * Override: prism_opt_init
 	 *
 	 * @since Prism 1.0
 	 */
@@ -260,7 +258,6 @@ if ( ! function_exists( 'prism_validate_opt' )) {
 	 * Validates theme options form post data.
 	 * Provides error reporting for invalid input.
 	 *
-	 * Override: prism_validate_opt <br>
 	 * Filter: prism_theme_opt_validation
 	 * 
 	 * @since Prism 1.0 

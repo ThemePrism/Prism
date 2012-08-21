@@ -71,8 +71,6 @@ if ( ! function_exists('prism_subsidiaries') )  {
 
 	/**
 	 * Create the subsidiary widgets areas in footer
-	 * 
-	 * Override: childtheme_override_subsidiaries
 	 */
 	function prism_subsidiaries() {
 	      	
@@ -93,8 +91,6 @@ add_action('prism_footer', 'prism_subsidiaries', 10);
 if ( ! function_exists( 'prism_siteinfoopen') )  {
 	/**
 	 * Open the #siteinfo div
-	 * 
-	 * Override: childtheme_override_siteinfoopen
 	 */
 	function prism_siteinfoopen() {
     ?>
@@ -111,8 +107,6 @@ add_action('prism_footer', 'prism_siteinfoopen', 20);
 if ( ! function_exists('prism_siteinfo'))  {
 	/**
 	 * Display the footer text from theme options within the #siteinfo div
-	 * 
-	 * Override: childtheme_override_siteinfo
 	 */
 	function prism_siteinfo() {
 		// footer text set in theme options
@@ -126,8 +120,6 @@ add_action('prism_footer', 'prism_siteinfo', 30);
 if ( ! function_exists('prism_siteinfoclose') )  {
 	/**
 	 * Close the #siteinfo div
-	 * 
-	 * Override: childtheme_override_siteinfoclose
 	 */
 	function prism_siteinfoclose() {
     ?>
