@@ -30,7 +30,7 @@ if ( ! function_exists('prism_create_doctype') )  {
 }
 
 
-if ( function_exists( 'prism_create_html' ) )  {
+if ( ! function_exists( 'prism_create_html' ) )  {
   /**
    * Display the HTML Tag with Language Attributes
    * Users conditional comments to target old versions of Internet Explorer
