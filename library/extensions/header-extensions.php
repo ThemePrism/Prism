@@ -6,44 +6,113 @@
  * @subpackage HeaderExtensions
  */
   
-
 /**
- * Display the DOCTYPE
+ * Register action hook: prism_head
+ *  
+ * @since Prism 1.0
  * 
- * Filter: prism_create_doctype
+ * Located in header.php, just before wp_head()
  */
-function prism_create_doctype() {
-    $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' . "\n";
-    $content .= '<html xmlns="http://www.w3.org/1999/xhtml"';
-    echo apply_filters( 'prism_create_doctype', $content );
+function prism_head() {
+    do_action('prism_head');
+} // end prism_head
+
+
+if ( function_exists('childtheme_override_create_doctype') )  {
+  /**
+   * @ignore
+   */
+   function prism_create_doctype() {
+      childtheme_override_create_doctype();
+    }
+} else {
+  /**
+   * Display the DOCTYPE
+   * 
+   * Filter: prism_create_doctype
+   */
+  function prism_create_doctype() {
+      echo apply_filters( 'prism_create_doctype', '<!doctype html>' . "\n" );
+  }
 }
 
 
-/**
- * Display the HEAD profile
- * 
- * Filter: prism_head_profile
- */
-function prism_head_profile() {
-    $content = '<head profile="http://gmpg.org/xfn/11">' . "\n";
-    echo apply_filters('prism_head_profile', $content );
+if ( function_exists('childtheme_override_create_html') )  {
+  /**
+   * @ignore
+   */
+   function prism_create_html() {
+      childtheme_override_create_html();
+    }
+} else {
+  /**
+   * Display the HTML Tag with Language Attributes
+   * Users conditional comments to target old versions of Internet Explorer
+   * http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ 
+   *
+   * Filter: prism_create_html
+   */
+  function prism_create_html() {
+    ob_start(); ?>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" <?php language_attributes() ?>><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" <?php language_attributes() ?>><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" <?php language_attributes() ?>><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" <?php language_attributes() ?>><!--<![endif]-->
+    <?php
+
+    $content = ob_get_contents();
+    ob_end_clean();
+
+    echo apply_filters( 'prism_create_html', $content );
+  }
 }
 
 
-/**
- * Display the META content-type
- * 
- * Filter: prism_create_contenttype
- */
-function prism_create_contenttype() {
-    $content = "<meta http-equiv=\"Content-Type\" content=\"";
-    $content .= get_bloginfo('html_type'); 
-    $content .= "; charset=";
-    $content .= get_bloginfo('charset');
-    $content .= "\" />";
-    $content .= "\n";
-    echo apply_filters('prism_create_contenttype', $content);
+if ( function_exists('childtheme_override_head_profile') )  {
+  /**
+   * @ignore
+   */
+   function prism_head_profile() {
+      childtheme_override_head_profile();
+    }
+} else {
+  /**
+   * Display the HEAD profile
+   * 
+   * Filter: prism_head_profile
+   */
+  function prism_head_profile() {
+      $content = '<head profile="http://gmpg.org/xfn/11">' . "\n";
+      echo apply_filters('prism_head_profile', $content );
+  }
 }
+
+
+if ( function_exists('childtheme_override_create_contenttype') )  {
+  /**
+   * @ignore
+   */
+   function prism_create_contenttype() {
+      childtheme_override_create_contenttype();
+    }
+} else {
+  /**
+   * Display the META content-type
+   *
+   * Override: childtheme_override_create_contenttype
+   * Filter: prism_create_contenttype
+   */
+  function prism_create_contenttype() {
+      $content = "<meta http-equiv=\"Content-Type\" content=\"";
+      $content .= get_bloginfo('html_type'); 
+      $content .= "; charset=";
+      $content .= get_bloginfo('charset');
+      $content .= "\" />";
+      $content .= "\n";
+      echo apply_filters('prism_create_contenttype', $content);
+  }
+}
+add_action('prism_head','prism_create_contenttype', 10);
 
 
 if ( function_exists('childtheme_override_doctitle') )  {
@@ -67,8 +136,9 @@ if ( function_exists('childtheme_override_doctitle') )  {
         echo $doctitle;
 	} // end prism_doctitle
 }
-
+add_action('prism_head','prism_doctitle', 20);
 	
+
 /**
  * Filters wp_title returning the doctitle contents
  * Located in header.php Credits: Tarski Theme
@@ -242,22 +312,19 @@ function prism_create_description() {
         echo apply_filters ('prism_create_description', $content);
 	}
 } // end prism_create_description
+add_action('prism_head','prism_create_description', 30);
 
 
 /**
- * Switch creating the meta-tag description
+ * Create the mobile viewport meta-tag
  * 
- * Default: ON
- * 
- * Filter: prism_show_description
+ * Filter: prism_mobile_viewport
  */
-function prism_show_description() {
-    $display = TRUE;
-    $display = apply_filters('prism_show_description', $display);
-    if ( $display ) {
-        prism_create_description();
-    }
-} // end prism_show_description
+function prism_mobile_viewport() {
+    $content = '<meta name="viewport" content="width=device-width">' . "\n";
+    echo apply_filters('prism_mobile_viewport', $content);
+} // end prism_mobile_viewport
+add_action('prism_head','prism_mobile_viewport', 40);
 
 
 /**
@@ -283,22 +350,8 @@ function prism_create_robots() {
     		}
 		}
 } // end prism_create_robots
+add_action('prism_head','prism_create_robots', 50);
 
-
-/**
- * Switch creating the robots meta-tag
- * 
- * Default: ON
- * 
- * Filter: prism_show_robots
- */
-function prism_show_robots() {
-    $display = TRUE;
-    $display = apply_filters('prism_show_robots', $display);
-    if ( $display ) {
-        prism_create_robots();
-    }
-} // end prism_show_robots
 
 
 /**
@@ -306,12 +359,12 @@ function prism_show_robots() {
  * 
  * This can be switched on or off using prism_show_pingback. Default: ON
  * 
- * Filter: prism_show_pingback
+ * Filter: prism_create_pingback
  * Filter: prism_pingback_url
  */
-function prism_show_pingback() {
+function prism_create_pingback() {
     $display = TRUE;
-    $display = apply_filters('prism_show_pingback', $display);
+    $display = apply_filters('prism_create_pingback', $display);
     if ($display) {
         $content = '<link rel="pingback" href="';
         $content .= get_bloginfo('pingback_url');
@@ -320,6 +373,25 @@ function prism_show_pingback() {
         echo apply_filters('prism_pingback_url',$content);
     }
 }
+add_action('prism_head','prism_create_pingback', 60);
+
+
+/**
+ * HTML5 Shiv for HTML5 support in older browsers
+ * 
+ * This can be switched on or off using prism_html5_shim. Default: ON
+ * 
+ * Filter: prism_html5_shim
+ */
+function prism_html5_shim() {
+    $content = '<!--[if lt IE 9]>';
+  $content .= '<script src="'. get_template_directory_uri(). '/js/html5.js" type="text/javascript"></script>';
+  $content .= '<![endif]-->' . "\n";
+
+    echo apply_filters('prism_html5_shim',$content);
+}
+add_action('prism_head','prism_html5_shim', 70);
+
 
 /**
  * Add the default stylesheet to the head of the document.
@@ -331,8 +403,8 @@ function prism_show_pingback() {
 function prism_create_stylesheet() {
 	wp_enqueue_style( 'prism_style', get_stylesheet_uri() );
 }
-
 add_action('wp_enqueue_scripts','prism_create_stylesheet');
+
 
 if ( function_exists('childtheme_override_head_scripts') )  {
     /**
@@ -362,15 +434,13 @@ if ( function_exists('childtheme_override_head_scripts') )  {
 		
 		// load jquery and superfish associated plugins when theme support is active
     	if ( current_theme_supports('prism_superfish') ) {
-			$scriptdir = get_template_directory_uri();
-			$scriptdir .= '/library/scripts/';
 
 			wp_enqueue_script('jquery');
 			wp_deregister_script('hoverIntent');
       wp_enqueue_script('hoverIntent', includes_url('js/hoverIntent.js'), array('jquery'), false, true);
 			wp_enqueue_script('superfish', $scriptdir . 'superfish.js', array('jquery'), '1.4.8', true);
 			wp_enqueue_script('supersubs', $scriptdir . 'supersubs.js', array('jquery'), '0.2b', true);
-			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', $scriptdir . 'prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
+			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', get_template_directory_uri() . '/library/scripts/prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
      	
      	}
  	}
@@ -390,14 +460,8 @@ add_action('wp_enqueue_scripts','prism_head_scripts');
  */
 function prism_page_menu_args() {
 	$args = array (
-		'sort_column' => 'menu_order',
-		'menu_class'  => 'menu',
-		'include'     => '',
-		'exclude'     => '',
+		'menu_class'  => 'menu cf',
 		'echo'        => FALSE,
-		'show_home'   => FALSE,
-		'link_before' => '',
-		'link_after'  => ''
 	);
 	return apply_filters('prism_page_menu_args', $args);
 }
@@ -414,17 +478,10 @@ function prism_page_menu_args() {
 function prism_nav_menu_args() {
 	$args = array (
 		'theme_location'	=> apply_filters('prism_primary_menu_id', 'primary-menu'),
-		'menu'				=> '',
-		'container'			=> 'div',
+		'container'			=> 'nav',
 		'container_class'	=> 'menu',
-		'menu_class'		=> 'sf-menu',
+		'menu_class'		=> 'sf-menu cf',
 		'fallback_cb'		=> 'wp_page_menu',
-		'before'			=> '',
-		'after'				=> '',
-		'link_before'		=> '',
-		'link_after'		=> '',
-		'depth'				=> 0,
-		'walker'			=> '',
 		'echo'				=> false
 	);
 	
@@ -433,9 +490,9 @@ function prism_nav_menu_args() {
 
 
 /**
- * Switch adding superfish css class to wp_page_menu
- * 
- * This adds a css class of "sf-menu" to the first <ul> of wp_page_menu. Default: ON
+ * Modify wp_page_menu 
+ * switch to <nav> element
+ * adds a css class of "sf-menu" to the first <ul> of wp_page_menu. Default: ON
  * Switchable using included filter.
  * 
  * Filter: prism_use_superfish
@@ -443,11 +500,14 @@ function prism_nav_menu_args() {
  * @param string
  * @return string
  */
-function prism_add_menuclass($ulclass) {
+function prism_modify_pagemenu($page_menu) {
+  $page_menu = preg_replace( '/<div class="menu cf">/', '<nav class="menu cf">', $page_menu, 1 );
+  $page_menu = preg_replace( '/<\/div>/', '</nav>', $page_menu, 1 );
+
 	if ( apply_filters( 'prism_use_superfish', TRUE ) ) {
-		return preg_replace( '/<ul>/', '<ul class="sf-menu">', $ulclass, 1 );
+		return preg_replace( '/<ul>/', '<ul class="sf-menu">', $page_menu, 1 );
 	} else {
-		return $ulclass;
+		return $page_menu;
 	}
 }
 
@@ -496,7 +556,7 @@ if ( function_exists( 'childtheme_override_brandingopen' ) )  {
 	 * Override: childtheme_override_brandingopen
 	 */
     function prism_brandingopen() {
-    	echo "\t<div id=\"branding\">\n";
+    	echo "\t<hgroup id=\"branding\">\n";
     }
 }
 
@@ -512,7 +572,7 @@ if ( function_exists( 'childtheme_override_blogtitle' ) )  {
     }
 } else {
     /**
-     * Display the blog title within the #branding div
+     * Display the blog title within the #branding hgroup
      * 
      * Override: childtheme_override_blogtitle
      */    
@@ -537,7 +597,7 @@ if ( function_exists('childtheme_override_blogdescription') )  {
     }
 } else {
     /**
-     * Display the blog description within the #branding div
+     * Display the blog description within the #branding hgroup
      * 
      * Override: childtheme_override_blogdescription
      */
@@ -568,7 +628,7 @@ if ( function_exists('childtheme_override_brandingclose') )  {
      * Override: childtheme_override_brandingclose
      */    
     function prism_brandingclose() {
-    	echo "\t\t</div><!--  #branding -->\n";
+    	echo "\t\t</hgroup><!--  #branding -->\n";
     }
 }
 
@@ -592,14 +652,15 @@ if ( function_exists('childtheme_override_access') )  {
     ?>
     
     <div id="access">
-    
-    	<div class="skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip navigation to the content', 'prism' ); ?>"><?php _e('Skip to content', 'prism'); ?></a></div><!-- .skip-link -->
+
+      <h1 class="assistive-text"><?php _e( 'Menu', 'prism' ); ?></h1>
+            <div class="assistive-text skip-link"><a href="#content" title="<?php esc_attr_e( 'Skip navigation to the content', 'prism' ); ?>"><?php _e('Skip to content', 'prism'); ?></a></div><!-- .skip-link -->
     	
     	<?php 
     	if ( ( function_exists("has_nav_menu") ) && ( has_nav_menu( apply_filters('prism_primary_menu_id', 'primary-menu') ) ) ) {
     	    echo  wp_nav_menu(prism_nav_menu_args());
     	} else {
-    	    echo  prism_add_menuclass(wp_page_menu(prism_page_menu_args()));	
+    	    echo  prism_modify_pagemenu(wp_page_menu(prism_page_menu_args()));	
     	}
     	?>
     	

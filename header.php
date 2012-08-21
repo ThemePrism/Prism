@@ -48,7 +48,7 @@ prism_create_html();
 
 		<?php
 			// Filter provided for altering output of the header opening element
-			echo ( apply_filters( 'prism_open_header',  '<div id="header">' ) );
+			echo ( apply_filters( 'prism_open_header',  '<header id="site-header">' ) );
     	?>
 
 
@@ -59,7 +59,7 @@ prism_create_html();
        		
     	<?php  	
     		// Filter provided for altering output of the header closing element
-			echo ( apply_filters( 'prism_close_header', '</div><!-- #header-->' ) );
+			echo ( apply_filters( 'prism_close_header', '</header><!-- #site-header-->' ) );
 		?>
 		        
     	<?php
