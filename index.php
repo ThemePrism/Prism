@@ -32,9 +32,6 @@
 				// create the navigation above the content
             	prism_navigation_above();
 				
-            	// calling the widget area 'index-top'
-            	get_sidebar('index-top');
-				
             	// action hook for placing content above the index loop
             	prism_above_indexloop();
 				
@@ -43,9 +40,6 @@
 				
             	// action hook for placing content below the index loop
             	prism_below_indexloop();
-				
-            	// calling the widget area 'index-bottom'
-            	get_sidebar('index-bottom');
 				
             	// create the navigation below the content
             	prism_navigation_below();

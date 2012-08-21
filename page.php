@@ -23,9 +23,6 @@
 
 				// filter for manipulating the element that wraps the content 
 				echo apply_filters( 'prism_open_id_content', '<div id="content">' . "\n" );
-			
-				// calling the widget area 'page-top'
-	            get_sidebar('page-top');
 	
 	            // start the loop
 	            while ( have_posts() ) : the_post();
@@ -66,8 +63,6 @@
 	        	// end loop
         		endwhile;
 	        
-	        	// calling the widget area 'page-bottom'
-	        	get_sidebar( 'page-bottom' );
 	        ?>
 	
 			</div><!-- #content -->

@@ -30,14 +30,8 @@
     	        // create the navigation above the content
 				prism_navigation_above();
 		
-    	        // calling the widget area 'single-top'
-    	        get_sidebar('single-top');
-		
     	        // action hook creating the single post
     	        prism_singlepost();
-				
-    	        // calling the widget area 'single-insert'
-    	        get_sidebar('single-insert');
 		
     	        // create the navigation below the content
 				prism_navigation_below();
@@ -48,8 +42,6 @@
     	        // end the loop
         		endwhile;
 		
-    	        // calling the widget area 'single-bottom'
-    	        get_sidebar('single-bottom');
 			?>
 		
 			</div><!-- #content -->
