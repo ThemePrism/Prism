@@ -503,7 +503,7 @@ function prism_nav_menu_args() {
  */
 function prism_modify_pagemenu($page_menu) {
   $page_menu = preg_replace( '/<div class="menu cf">/', '<nav class="menu cf">', $page_menu, 1 );
-  $page_menu = preg_replace( '/<\/div>/', '</nav>', $page_menu, 1 );
+  $page_menu = preg_replace( '/$<\/div>/', '</nav>', $page_menu, 1 );
 
 	if ( apply_filters( 'prism_use_superfish', TRUE ) ) {
 		return preg_replace( '/<ul>/', '<ul class="sf-menu">', $page_menu, 1 );
