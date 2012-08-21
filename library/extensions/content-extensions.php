@@ -416,7 +416,7 @@ if (function_exists('childtheme_override_nav_above'))  {
 					
 				</nav>
 		<?php } else { ?>
-				<dnav id="nav-above" class="navigation">
+				<nav id="nav-above" class="navigation">
                		<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
                 	<?php wp_pagenavi(); ?>
 					<?php } else { ?>
