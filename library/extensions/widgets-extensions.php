@@ -64,6 +64,21 @@ function prism_search_form() {
  */
 function prism_widgets_array() {
 	$prism_widgetized_areas = array(
+		'Header Aside' => array(
+			'admin_menu_order' => 50,
+			'args' => array (
+				'name' => __( 'Header Aside', 'prism' ),
+				'id' => 'header-aside',
+                'description' => __('A widget area in the header.', 'prism'),
+				'before_widget' => prism_before_widget(),
+				'after_widget' => prism_after_widget(),
+				'before_title' => prism_before_title(),
+				'after_title' => prism_after_title(),
+				),
+			'action_hook'	=> 'prism_header',
+			'function'		=> 'prism_header_aside',
+			'priority'		=> 2
+			),
 		'Primary Aside' => array(
 			'admin_menu_order' => 100,
 			'args' => array (
@@ -138,127 +153,7 @@ function prism_widgets_array() {
 			'action_hook'	=> 'widget_area_subsidiaries',
 			'function'		=> 'prism_3rd_subsidiary_aside',
 			'priority'		=> 70,
-		),
-		'Index Top' => array(
-			'admin_menu_order' => 600,
-			'args' => array (
-				'name' => __( 'Index Top', 'prism' ),
-				'id' => 'index-top',
-                'description' => __('The top widget area displayed on the index page.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_index_top',
-			'function'		=> 'prism_index_top',
-			'priority'		=> 10,
-			),
-		'Index Insert' => array(
-			'admin_menu_order' => 700,
-			'args' => array (
-				'name' => __( 'Index Insert', 'prism' ),
-				'id' => 'index-insert',
-                'description' => __('The widget area inserted after x posts on the index page.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_index_insert',
-			'function'		=> 'prism_index_insert',
-			'priority'		=> 10,
-			),
-		'Index Bottom' => array(
-			'admin_menu_order' => 800,
-			'args' => array (
-				'name' => __( 'Index Bottom', 'prism' ),
-				'id' => 'index-bottom',
-                'description' => __('The bottom widget area displayed on the index page.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_index_bottom',
-			'function'		=> 'prism_index_bottom',
-			'priority'		=> 10,
-			),
-		'Single Top' => array(
-			'admin_menu_order' => 900,
-			'args' => array (
-				'name' => __( 'Single Top', 'prism' ),
-				'id' => 'single-top',
-                'description' => __('The top widget area displayed on a single post.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_single_top',
-			'function'		=> 'prism_single_top',
-			'priority'		=> 10,
-			),
-		'Single Insert' => array(
-			'admin_menu_order' => 1000,
-			'args' => array (
-				'name' => __( 'Single Insert', 'prism' ),
-				'id' => 'single-insert',
-                'description' => __('The widget area inserted between the post and the comments on a single post.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_single_insert',
-			'function'		=> 'prism_single_insert',
-			'priority'		=> 10,
-			),
-		'Single Bottom' => array(
-			'admin_menu_order' => 1100,
-			'args' => array (
-				'name' => __( 'Single Bottom', 'prism' ),
-				'id' => 'single-bottom',
-                'description' => __('The bottom widget area displayed on a single post.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_single_bottom',
-			'function'		=> 'prism_single_bottom',
-			'priority'		=> 10,
-			),
-		'Page Top' => array(
-			'admin_menu_order' => 1200,
-			'args' => array (
-				'name' => __( 'Page Top', 'prism' ),
-				'id' => 'page-top',
-                'description' => __('The top widget area displayed on a page.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_page_top',
-			'function'		=> 'prism_page_top',
-			'priority'		=> 10,
-			),
-		'Page Bottom' => array(
-			'admin_menu_order' => 1300,
-			'args' => array (
-				'name' => __( 'Page Bottom', 'prism' ),
-				'id' => 'page-bottom',
-                'description' => __('The bottom widget area displayed on a page.', 'prism'),
-				'before_widget' => prism_before_widget(),
-				'after_widget' => prism_after_widget(),
-				'before_title' => prism_before_title(),
-				'after_title' => prism_after_title(),
-				),
-			'action_hook'	=> 'widget_area_page_bottom',
-			'function'		=> 'prism_page_bottom',
-			'priority'		=> 10,
-			),
+		)
 		);
 	
 	return apply_filters('prism_widgetized_areas', $prism_widgetized_areas);
@@ -374,6 +269,20 @@ add_filter('prism_widgetized_areas', 'prism_sort_widgetized_areas', 100);
 
 
 /**
+ * Displays the Header Aside
+ *
+ * @uses prism_before_widget_area
+ * @uses prism_after_widget_area
+ */
+function prism_header_aside() {
+	if ( is_active_sidebar( 'header-aside' ) ) {
+		echo prism_before_widget_area( 'header-aside' );
+		dynamic_sidebar( 'header-aside' );
+		echo prism_after_widget_area( 'header-aside' );
+	}
+}
+
+/**
  * Displays the Primary Aside
  * 
  * @uses prism_before_widget_area
@@ -390,8 +299,7 @@ function prism_primary_aside() {
 		echo prism_before_widget_area( 'primary-aside' );
 		dynamic_sidebar( 'primary-aside' );
 		echo prism_after_widget_area( 'primary-aside' );
-	// WordPress 3.4
-	} elseif ( method_exists ( $wp_customize,'is_preview' ) && $wp_customize->is_preview()  ){ 
+	} elseif ( $wp_customize->is_preview()  ){ 
 		echo prism_before_widget_area( 'primary-aside' );
 		the_widget('Prism_Widget_Search', null , $args);
 		the_widget('WP_Widget_Pages', null , $args);
@@ -418,8 +326,7 @@ function prism_secondary_aside() {
 		echo prism_before_widget_area( 'secondary-aside' );
 		dynamic_sidebar( 'secondary-aside' );
 		echo prism_after_widget_area( 'secondary-aside' );
-	// WordPress 3.4
-	} elseif ( method_exists ( $wp_customize,'is_preview' ) && $wp_customize->is_preview()  ){ 
+	} elseif ( $wp_customize->is_preview() ){ 
 		echo prism_before_widget_area( 'secondary-aside' );
 		the_widget('Prism_Widget_RSS', null, $args);
 		the_widget('Prism_Widget_Meta', null, $args); 
@@ -428,7 +335,7 @@ function prism_secondary_aside() {
 }
 
 /**
- * Displays the 2nd Subsidiary Aside
+ * Displays the 1st Subsidiary Aside
  *
  * @uses prism_before_widget_area
  * @uses prism_after_widget_area
