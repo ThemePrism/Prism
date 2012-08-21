@@ -408,15 +408,15 @@ if (function_exists('childtheme_override_nav_above'))  {
 	function prism_nav_above() {
 		if (is_single()) { 
 		?>
-				<div id="nav-above" class="navigation">
+				<nav id="nav-above" class="navigation">
 				
 					<div class="nav-previous"><?php prism_previous_post_link() ?></div>
 					
 					<div class="nav-next"><?php prism_next_post_link() ?></div>
 					
-				</div>
+				</nav>
 		<?php } else { ?>
-				<div id="nav-above" class="navigation">
+				<dnav id="nav-above" class="navigation">
                		<?php if ( function_exists( 'wp_pagenavi' ) ) { ?>
                 	<?php wp_pagenavi(); ?>
 					<?php } else { ?>
@@ -427,7 +427,7 @@ if (function_exists('childtheme_override_nav_above'))  {
 
 					<?php } ?>
 					
-				</div>	
+				</nav>	
 		<?php
 		}
 	}
@@ -1536,15 +1536,15 @@ if (function_exists('childtheme_override_nav_below'))  {
 	function prism_nav_below() {
 		if (is_single()) { ?>
 
-			<div id="nav-below" class="navigation">
+			<nav id="nav-below" class="navigation">
 				<div class="nav-previous"><?php prism_previous_post_link() ?></div>
 				<div class="nav-next"><?php prism_next_post_link() ?></div>
-			</div>
+			</nav>
 
 <?php
 		} else { ?>
 
-			<div id="nav-below" class="navigation">
+			<nav id="nav-below" class="navigation">
                 <?php if(function_exists('wp_pagenavi')) { ?>
                 <?php wp_pagenavi(); ?>
                 <?php } else { ?>  
@@ -1554,7 +1554,7 @@ if (function_exists('childtheme_override_nav_below'))  {
 				<div class="nav-next"><?php previous_posts_link(sprintf('%s <span class="meta-nav">&raquo;</span>',__( 'Newer posts', 'prism') ) ) ?></div>
 
 				<?php } ?>
-			</div>	
+			</nav>	
 	
 <?php
 		}
