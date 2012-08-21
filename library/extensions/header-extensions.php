@@ -427,6 +427,7 @@ if ( function_exists('childtheme_override_head_scripts') )  {
      * @since 1.0
      */
     function prism_head_scripts() {
+      $scriptdir = get_template_directory_uri() . '/library/scripts/';
     	
     	// load comment reply script on posts and pages when option is set and check for deprecated filter
     	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
@@ -440,7 +441,7 @@ if ( function_exists('childtheme_override_head_scripts') )  {
       wp_enqueue_script('hoverIntent', includes_url('js/hoverIntent.js'), array('jquery'), false, true);
 			wp_enqueue_script('superfish', $scriptdir . 'superfish.js', array('jquery'), '1.4.8', true);
 			wp_enqueue_script('supersubs', $scriptdir . 'supersubs.js', array('jquery'), '0.2b', true);
-			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', get_template_directory_uri() . '/library/scripts/prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
+			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', $scriptdir . 'prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
      	
      	}
  	}
