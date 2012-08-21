@@ -298,21 +298,13 @@ function prism_belowcontainer() {
 } // end prism_belowcontainer
 
 
-if (function_exists('childtheme_override_page_title'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_page_title() {
-		childtheme_override_page_title();
-	}
-} else {
+if ( ! function_exists( 'prism_page_title' ))  {
 	/**
 	 * Create the page title.
 	 * 
 	 * Echoes the title of the webpage for specific queries. The markup is conditionally set using template tags.
 	 * Located in templates: archive.php, attachement.php, author.php, category.php, search.php, tag.php
 	 * 
-	 * Override: childtheme_override_page_title <br>
 	 * Filter: prism_page_title 
 	 * 
 	 * @todo review and remove possiblity for displaying an empty div for archive-meta
@@ -388,20 +380,11 @@ if (function_exists('childtheme_override_page_title'))  {
 
  
 
-if (function_exists('childtheme_override_nav_above'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_nav_above() {
-		childtheme_override_nav_above();
-	}
-} else {
+if ( ! function_exists( 'prism_nav_above' ))  {
 	/**
 	 * Create the above navigation
 	 * 
 	 * Includes compatibility with WP-PageNavi plugin
-	 * 
-	 * Override: childtheme_override_nav_above <br>
 	 * 
 	 * @link http://wordpress.org/extend/plugins/wp-pagenavi/ WP-PageNavi Plugin Page
 	 */
@@ -436,20 +419,11 @@ if (function_exists('childtheme_override_nav_above'))  {
 add_action('prism_navigation_above', 'prism_nav_above', 2);
 
 
-if (function_exists('childtheme_override_default_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_default_loop() {
-		childtheme_override_default_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_default_loop' ))  {
 	/**
 	 * The Default loop
 	 * 
 	 * Easily change all loops at once
-	 * 
-	 * Override: childtheme_override_default_loop
 	 */
 	function prism_default_loop() {
 
@@ -486,20 +460,11 @@ if (function_exists('childtheme_override_default_loop'))  {
 } // end default_loop
 
 
-if (function_exists('childtheme_override_archive_loop'))  {
+if ( ! function_exists( 'prism_archive_loop') )  {
 	/**
-	 * @ignore
-	 */
-	function prism_archive_loop() {
-		childtheme_override_archive_loop();
-	}
-} else {
-	/**
-	 * The Default loop
+	 * The Archive loop
 	 * 
 	 * Located in archive.php
-	 * 
-	 * Override: childtheme_override_archive_loop
 	 */
 	function prism_archive_loop() {
 		prism_default_loop();
@@ -509,20 +474,11 @@ if (function_exists('childtheme_override_archive_loop'))  {
 add_action('prism_archiveloop', 'prism_archive_loop');
 
 
-if (function_exists('childtheme_override_author_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_author_loop() {
-		childtheme_override_author_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_author_loop' ))  {
 	/**
 	 * The Author loop
 	 * 
 	 * Located in author.php
-	 * 
-	 * Override: childtheme_override_author_loop
 	 */
 	function prism_author_loop() {
 		prism_default_loop();
@@ -532,20 +488,11 @@ if (function_exists('childtheme_override_author_loop'))  {
 add_action('prism_authorloop', 'prism_author_loop');
 
 
-if (function_exists('childtheme_override_category_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_category_loop() {
-		childtheme_override_category_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_category_loop' ))  {
 	/**
 	 * The Category loop
 	 * 
 	 * Located in category.php
-	 * 
-	 * Override: childtheme_override_category_loop
 	 */
 	function prism_category_loop() {
 		prism_default_loop();
@@ -555,20 +502,11 @@ if (function_exists('childtheme_override_category_loop'))  {
 add_action('prism_categoryloop', 'prism_category_loop');
 
 
-if (function_exists('childtheme_override_index_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_index_loop() {
-		childtheme_override_index_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_index_loop' ))  {
 	/**
 	 * The Index loop
 	 * 
 	 * Located in index.php
-	 * 
-	 * Override: childtheme_override_index_loop
 	 */
 	function prism_index_loop() {
 		prism_default_loop();
@@ -578,20 +516,11 @@ if (function_exists('childtheme_override_index_loop'))  {
 add_action('prism_indexloop', 'prism_index_loop');
 
 
-if (function_exists('childtheme_override_single_post'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_single_post() {
-		childtheme_override_single_post();
-	}
-} else {
+if ( ! function_exists( 'prism_single_post' ))  {
 	/**
 	 * The Single post loop
 	 * 
 	 * Located in single.php
-	 * 
-	 * Override: childtheme_override_single_post
 	 */
 	function prism_single_post() { 
 		prism_default_loop();
@@ -601,20 +530,11 @@ if (function_exists('childtheme_override_single_post'))  {
 add_action('prism_singlepost', 'prism_single_post');
 
 
-if (function_exists('childtheme_override_search_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_search_loop() {
-		childtheme_override_search_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_search_loop' ))  {
 	/**
 	 * The Search loop
 	 * 
 	 * Located in search.php
-	 * 
-	 * Override: childtheme_override_search_loop
 	 */
 	function prism_search_loop() {
 		prism_default_loop();
@@ -624,20 +544,11 @@ if (function_exists('childtheme_override_search_loop'))  {
 add_action('prism_searchloop', 'prism_search_loop');
 
 
-if (function_exists('childtheme_override_tag_loop'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_tag_loop() {
-		childtheme_override_tag_loop();
-	}
-} else {
+if ( ! function_exists( 'prism_tag_loop' ))  {
 	/**
 	 * The Tag loop
 	 * 
 	 * Located in tag.php
-	 * 
-	 * Override: childtheme_override_tag_loop
 	 */
 	function prism_tag_loop() {
 		prism_default_loop();
@@ -679,18 +590,10 @@ function prism_time_display() {
 } // end time_display
 
 
-if (function_exists('childtheme_override_postheader'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postheader() {
-		childtheme_override_postheader();
-	}
-} else {
+if ( ! function_exists( 'prism_postheader' ))  {
 	/**
 	 * Create the post header
 	 * 
-	 * Override: childtheme_override_postheader <br>
 	 * Filter: prism_postheader
 	 */
 	function prism_postheader() {
@@ -710,18 +613,10 @@ if (function_exists('childtheme_override_postheader'))  {
 }  // end postheader
 
 
-if (function_exists('childtheme_override_postheader_posteditlink'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postheader_posteditlink() {
-		return childtheme_override_postheader_posteditlink(); 
-	}
-} else {
+if ( ! function_exists( 'prism_postheader_posteditlink' ))  {
 	/**
 	 * Create the post edit link
 	 * 
-	 * Override: childtheme_override_postheader_posteditlink <br>
 	 * Filter: prism_postheader_posteditlink
 	 */
 	function prism_postheader_posteditlink() {
@@ -731,7 +626,7 @@ if (function_exists('childtheme_override_postheader_posteditlink'))  {
 			    			get_edit_post_link(),
 			    			esc_attr__('Edit post', 'prism'),
 							/* translators: post edit link */
-			    			__('Edit', 'prism'));
+			    			__('Edit', 'prism' ));
 		
 		return apply_filters('prism_postheader_posteditlink', $posteditlink); 
 
@@ -739,18 +634,10 @@ if (function_exists('childtheme_override_postheader_posteditlink'))  {
 } // end postheader_posteditlink
 
 
-if (function_exists('childtheme_override_postheader_posttitle'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postheader_posttitle() {
-		return childtheme_override_postheader_posttitle();
-	}
-} else {
+if ( function_exists( 'prism_postheader_posttitle' ))  {
 	/**
 	 * Create the post title
 	 * 
-	 * Override: childtheme_override_postheader_posttitle <br>
 	 * Filter: prism_postheader_posttitle
 	 */
 	function prism_postheader_posttitle() {
@@ -775,18 +662,10 @@ if (function_exists('childtheme_override_postheader_posttitle'))  {
 } // end postheader_posttitle
 
 
-if (function_exists('childtheme_override_postheader_postmeta'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postheader_postmeta() {
-		return childtheme_override_postheader_postmeta();
-	}
-} else {
+if ( ! function_exists( 'prism_postheader_postmeta' ))  {
 	/**
 	 * Create the post meta
 	 * 
-	 * Override: childtheme_override_postheader_postmeta <br>
 	 * Filter: prism_postheader_postmeta
 	 */
 	function prism_postheader_postmeta() {
@@ -807,18 +686,10 @@ if (function_exists('childtheme_override_postheader_postmeta'))  {
 } // end postheader_postmeta
 
 
-if (function_exists('childtheme_override_postmeta_authorlink'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postmeta_authorlink() {
-		return childtheme_override_postmeta_authorlink();
-	}
-} else {
+if ( ! function_exists( 'prism_postmeta_authorlink' ))  {
 	/**
 	 * Create the author link for post meta
 	 * 
-	 * Override: childtheme_override_postmeta_authorlink <br>
 	 * Filter: prism_postmeta_authorlink
 	 */
 	function prism_postmeta_authorlink() {
@@ -848,18 +719,10 @@ if (function_exists('childtheme_override_postmeta_authorlink'))  {
 } // end postmeta_authorlink
 
 
-if (function_exists('childtheme_override_postmeta_entrydate'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postmeta_entrydate() {
-		return childtheme_override_postmeta_entrydate();
-	}
-} else {
+if ( ! function_exists( 'prism_postmeta_entrydate' ))  {
 	/**
 	 * Create entry date for post meta
 	 * 
-	 * Override: childtheme_override_postmeta_entrydate <br>
 	 * Filter: prism_postmeta_entrydate
 	 */ 
 	function prism_postmeta_entrydate() {
@@ -876,24 +739,16 @@ if (function_exists('childtheme_override_postmeta_entrydate'))  {
 } // end postmeta_entrydate
 
 
-if (function_exists('childtheme_override_postmeta_editlink'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postmeta_editlink() {
-		return childtheme_override_postmeta_editlink();
-	}
-} else {
+if ( ! function_exists( 'prism_postmeta_editlink' ))  {
 	/**
 	 * Create edit link for post meta
 	 * 
-	 * Override: childtheme_override_postmeta_editlink <br>
 	 * Filter: prism_postmeta_editlink
 	 */
 	function prism_postmeta_editlink() {
     
 	    // Display edit link
-	    if (current_user_can('edit_posts')) {
+	    if (current_user_can('edit_posts' )) {
 	        $editlink = '<span class="meta-sep meta-sep-edit">|</span> ' . "\n\n\t\t\t\t\t\t" . prism_postheader_posteditlink();
 	        return apply_filters('prism_postmeta_editlink', $editlink);
 	    }               
@@ -902,20 +757,12 @@ if (function_exists('childtheme_override_postmeta_editlink'))  {
 
 
 // Sets up the post content 
-if (function_exists('childtheme_override_content_init'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_content_init() {
-		childtheme_override_content_init();
-	}
-} else {
+if ( ! function_exists( 'prism_content_init' ))  {
 	/**
 	 * Set up the post content to use excerpt or full posts
 	 * 
 	 * Uses conditional template tags to decide whether posts should be displayed using excerpts or the full content
 	 * 
-	 * Override: childtheme_override_content_init <br>
 	 * Filter: prism_content
 	 */
 	function prism_content_init() {
@@ -948,21 +795,13 @@ if (function_exists('childtheme_override_content_init'))  {
 add_action('prism_abovepost','prism_content_init');
 
 
-if (function_exists('childtheme_override_content'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_content() {
-		childtheme_override_content();
-	}
-} else {
+if ( ! function_exists( 'prism_content' ))  {
 	/**
 	 * Create the post content
 	 *
 	 * Detects whether to use the full length or excerpt of a post and displays it. Post thumbnails are included on
 	 * excerpt posts.
 	 * 
-	 * Override: childtheme_override_content <br>
 	 * Filter: prism_post_thumbs <br>
 	 * Filter: prism_post_thumb_size <br>
 	 * Filter: prism_post_thumb_attr <br>
@@ -1001,18 +840,9 @@ if (function_exists('childtheme_override_content'))  {
 } // end content
 
 
-if (function_exists('childtheme_override_archivesopen'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_archivesopen() {
-		childtheme_override_archivesopen();
-	}
-} else {
+if ( ! function_exists( 'prism_archivesopen' ))  {
 	/**
 	 * Open the list of archived posts in the page template Archives Page
-	 * 
-	 * Override: childtheme_override_archivesopen
 	 */
 	function prism_archivesopen() { ?>
 		
@@ -1023,20 +853,11 @@ if (function_exists('childtheme_override_archivesopen'))  {
 add_action('prism_archives', 'prism_archivesopen', 1);
 
 
-if (function_exists('childtheme_override_category_archives'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_category_archives() {
-		childtheme_override_category_archives();
-	}
-} else {
+if ( ! function_exists( 'prism_category_archives' ))  {
 	/**
 	 * Display category archives 
 	 * 
 	 * Added to the archive list on the page template Archives Page
-	 * 
-	 * Override: childtheme_override_category_archives
 	 */
 	function prism_category_archives() { ?>
 				<li id="category-archives" class="content-column">
@@ -1054,20 +875,11 @@ if (function_exists('childtheme_override_category_archives'))  {
 add_action('prism_archives', 'prism_category_archives', 3);
 
 
-if (function_exists('childtheme_override_monthly_archives'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_monthly_archives() {
-		childtheme_override_monthly_archives();
-	}
-} else {
+if ( ! function_exists( 'prism_monthly_archives' ))  {
 	/**
 	 * Display monthly archives 
 	 * 
 	 * Added to the archive list on the page template Archives Page
-	 * 
-	 * Override: childtheme_override_monthly_archives
 	 */
 	function prism_monthly_archives() { ?>
 				<li id="monthly-archives" class="content-column">
@@ -1083,18 +895,9 @@ if (function_exists('childtheme_override_monthly_archives'))  {
 add_action('prism_archives', 'prism_monthly_archives', 5);
 
 
- if (function_exists('childtheme_override_archivesclose'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_archivesclose() {
-		childtheme_override_archivesclose();
-	}
-} else {
+ if ( ! function_exists( 'prism_archivesclose' ))  {
 	/**
 	 * Close the archive list used in the page template Archives Page
-	 * 
-	 * Override: childtheme_override_archivesclose
 	 */
 	function prism_archivesclose() { ?>
 		</ul>
@@ -1114,19 +917,11 @@ function prism_404() {
 } // end prism_404
 
 
-if ( function_exists('childtheme_override_404_content') )  {
-	/**
-	 * @ignore
-	 */
-	function prism_404_content() {
-		childtheme_override_404_content();
-	}
-} else {
+if ( ! function_exists('prism_404_content') )  {
 	/**
 	 * Create the content for the 404 Error page
 	 * 
 	 * Located in 404.php
-	 * Override: childtheme_override_404_content
 	 */
 	function prism_404_content() { ?>
   			<?php prism_postheader(); ?>
@@ -1153,7 +948,6 @@ add_action( 'prism_404','prism_404_content' );
  * Used on posts that are divided using the more tag in post editor
  * 
  * Filter: more_text
- *
  */
 function prism_more_text() {
 	/* translators: %s is right angle brackets */
@@ -1175,18 +969,10 @@ function prism_list_bookmarks_args() {
 } // end prism_list_bookmarks_args
 
 
-if (function_exists('childtheme_override_postfooter'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter() {
-		childtheme_override_postfooter();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter' ))  {
 	/**
 	 * Create the post footer
 	 * 
-	 * Override: childtheme_override_postfooter <br>
 	 * Filter: prism_postfooter
 	 */
 	function prism_postfooter() {
@@ -1226,7 +1012,7 @@ if (function_exists('childtheme_override_postfooter'))  {
 	            $postfooter .= prism_postfooter_postcomments();
 	        }
 	       	// Display edit link
-	    	if (current_user_can('edit_posts')) {
+	    	if (current_user_can('edit_posts' )) {
 	    		if ( !is_single() && post_type_supports( $post_type, 'comments') ) {
 	        		$postfooter .= "\n\n\t\t\t\t\t\t" . '<span class="meta-sep meta-sep-edit">|</span> ';
 	        	} 
@@ -1243,18 +1029,10 @@ if (function_exists('childtheme_override_postfooter'))  {
 } // end postfooter
 
 
-if (function_exists('childtheme_override_postfooter_posteditlink'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_posteditlink() {
-		return childtheme_override_postfooter_posteditlink();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_posteditlink' ))  {
 	/**
 	 * Create the post edit link for the post footer
 	 * 
-	 * Override: childtheme_override_postfooter_posteditlink <br>
 	 * Filter: prism_postfooter_posteditlink
 	 */
 	function prism_postfooter_posteditlink() {
@@ -1263,7 +1041,7 @@ if (function_exists('childtheme_override_postfooter_posteditlink'))  {
 			    			get_edit_post_link(),
 			    			esc_attr__('Edit post', 'prism'),
 							/* translators: post edit link */
-			    			__('Edit', 'prism'));
+			    			__('Edit', 'prism' ));
 
 
 	    return apply_filters('prism_postfooter_posteditlink',$posteditlink); 
@@ -1272,20 +1050,12 @@ if (function_exists('childtheme_override_postfooter_posteditlink'))  {
 } // end postfooter_posteditlink
 
 
-if (function_exists('childtheme_override_postfooter_posttax'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_posttax() {
-		return childtheme_override_postfooter_posttax();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_posttax' ))  {
 	/**
 	 * Create the taxonomy list for the post footer
 	 * 
 	 * Lists categories, tags, and custom taxonomies
 	 * 
-	 * Override: childtheme_override_postfooter_posttax <br>
 	 * Filter: prism_postfooter_posttax
 	 */
 	function prism_postfooter_posttax() {		
@@ -1309,18 +1079,10 @@ if (function_exists('childtheme_override_postfooter_posttax'))  {
 }
 
 
-if (function_exists('childtheme_override_postfooter_postterms'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_postterms($tax) {
-		return childtheme_override_postfooter_postterms($tax);
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_postterms' ))  {
 	/**
 	 * Create the list of custom taxonomy terms for post footer
 	 *
-	 * Override: childtheme_override_postfooter_postterms($tax) <br>
 	 * Filter: prism_postfooter_postterms
 	 * 
 	 * @param string $tax The taxonomy that the terms will be fetched from
@@ -1358,18 +1120,10 @@ if (function_exists('childtheme_override_postfooter_postterms'))  {
 }
 
 
-if (function_exists('childtheme_override_postfooter_postcategory'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_postcategory() {
-		return childtheme_override_postfooter_postcategory();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_postcategory' ))  {
 	/**
 	 * Create the category list for post footer
 	 * 
-	 * Override: childtheme_override_postfooter_postcategory <br>
 	 * Filter: prism_postfooter_postcategory
 	 */
 	function prism_postfooter_postcategory() {
@@ -1401,18 +1155,10 @@ if (function_exists('childtheme_override_postfooter_postcategory'))  {
 }  // end postfooter_postcategory
 
 
-if (function_exists('childtheme_override_postfooter_posttags'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_posttags() {
-		return childtheme_override_postfooter_posttags();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_posttags' ))  {
 	/**
 	 * Create the tags list for post footer
 	 * 
-	 * Override: childtheme_override_postfooter_posttags <br>
 	 * Filter: prism_postfooter_posttags
 	 */
 	function prism_postfooter_posttags() {
@@ -1435,18 +1181,10 @@ if (function_exists('childtheme_override_postfooter_posttags'))  {
 } // end postfooter_posttags
 
 
-if (function_exists('childtheme_override_postfooter_postcomments'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_postcomments() {
-		return childtheme_override_postfooter_postcomments();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_postcomments' ))  {
 	/**
 	 * Create the comments link for the post footer on archive pages
 	 * 
-	 * Override: childtheme_override_postfooter_postcomments <br>
 	 * Filter: prism_postfooter_postcomments
 	 */
 	function prism_postfooter_postcomments() {
@@ -1463,7 +1201,7 @@ if (function_exists('childtheme_override_postfooter_postcomments'))  {
 	            $postcomments = sprintf('<span class="comments-link"><a href="%s" title="%s" rel="bookmark">%s</a></span>',
 	        						apply_filters('the_permalink', get_permalink()) . '#respond',
 	        						sprintf( esc_attr__('Comment on %s', 'prism'), the_title_attribute( 'echo=0' ) ),
-	        						__('Leave a comment', 'prism'));
+	        						__('Leave a comment', 'prism' ));
 	        }
 	    } else {
 	        $postcomments = '<span class="comments-link comments-closed-link">' . __('Comments closed', 'prism') .'</span>';
@@ -1473,40 +1211,32 @@ if (function_exists('childtheme_override_postfooter_postcomments'))  {
 } // end postfooter_postcomments
 
 
-if (function_exists('childtheme_override_postfooter_postconnect'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_postfooter_postconnect() {
-		return childtheme_override_postfooter_postconnect();
-	}
-} else {
+if ( ! function_exists( 'prism_postfooter_postconnect' ))  {
 	/**
 	 * Create the comments link for the post footer on single posts
 	 * 
-	 * Override: childtheme_override_postfooter_postconnect <br>
 	 * Filter: prism_postfooter_postconnect
 	 */
 		function prism_postfooter_postconnect() {
     
 	    if ((comments_open()) && (pings_open())) { /* Comments are open */
 	        $postconnect = sprintf( _x('%1$sPost a comment%2$s or leave a trackback: %3$s', '1s and 2s are the a href link wrappers, do not reverse them. 3s is trackback url.', 'prism'), 
-								sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'prism')), 
+								sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'prism' )), 
 								'</a>' ,
 								sprintf('<a class="trackback-link" href="%s" title ="%s" rel="trackback">%s</a>.', 
 									get_trackback_url(),
 									esc_attr__('Trackback URL for your post', 'prism'),
-						 			__('Trackback URL', 'prism'))
+						 			__('Trackback URL', 'prism' ))
 							);
 	    } elseif (!(comments_open()) && (pings_open())) { /* Only trackbacks are open */
 	        $postconnect = sprintf( _x('Comments are closed, but you can leave a trackback: %s', '%s is trackback url, wrapped in link tags', 'prism'),
 							sprintf('<a class="trackback-link" href="%s" title="%s" rel="trackback">%s</a>.', 
 								get_trackback_url(), 
 								esc_attr__('Trackback URL for your post', 'prism'), 
-								__('Trackback URL', 'prism'))
+								__('Trackback URL', 'prism' ))
 							);
 	    } elseif ((comments_open()) && !(pings_open())) { /* Only comments open */
-	        $postconnect = sprintf( __('Trackbacks are closed, but you can %1$spost a comment%2$s.', '1s and 2s are the a href link wrappers, do not reverse them', 'prism'), sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'prism')), '</a>');
+	        $postconnect = sprintf( __('Trackbacks are closed, but you can %1$spost a comment%2$s.', '1s and 2s are the a href link wrappers, do not reverse them', 'prism'), sprintf('<a class="comment-link" title="%s" href="#respond">', esc_attr__('Post a comment', 'prism' )), '</a>');
 	    } elseif (!(comments_open()) && !(pings_open())) { /* Comments and trackbacks closed */
 	        $postconnect = __('Both comments and trackbacks are currently closed.', 'prism');
 	    }
@@ -1516,20 +1246,11 @@ if (function_exists('childtheme_override_postfooter_postconnect'))  {
 
 
 // Action to create the below navigation
-if (function_exists('childtheme_override_nav_below'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_nav_below() {
-		childtheme_override_nav_below();
-	}
-} else {
+if ( ! function_exists( 'prism_nav_below' ))  {
 	/**
 	 * Create the below navigation
 	 * 
 	 * Provides compatibility with WP-PageNavi plugin
-	 * 
-	 * Override: childtheme_override_nav_below
 	 * 
 	 * @link http://wordpress.org/extend/plugins/wp-pagenavi/ WP-PageNavi Plugin Page
 	 */
@@ -1545,7 +1266,7 @@ if (function_exists('childtheme_override_nav_below'))  {
 		} else { ?>
 
 			<nav id="nav-below" class="navigation">
-                <?php if(function_exists('wp_pagenavi')) { ?>
+                <?php if( ! function_exists( 'wp_pagenavi' )) { ?>
                 <?php wp_pagenavi(); ?>
                 <?php } else { ?>  
 				
@@ -1564,18 +1285,10 @@ if (function_exists('childtheme_override_nav_below'))  {
 add_action('prism_navigation_below', 'prism_nav_below', 2);
 
 
-if (function_exists('childtheme_override_previous_post_link'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_previous_post_link() {
-		childtheme_override_previous_post_link();
-	}
-} else {
+if ( ! function_exists( 'prism_previous_post_link' ))  {
 	/**
 	 * Create the previous post link on single pages
 	 * 
-	 * Override: childtheme_override_previous_post_link
 	 * Filter: prism_previous_post_link_args
 	 */
 	function prism_previous_post_link() {
@@ -1594,18 +1307,10 @@ if (function_exists('childtheme_override_previous_post_link'))  {
 } // end previous_post_link
 
 
-if (function_exists('childtheme_override_next_post_link'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_next_post_link() {
-		childtheme_override_next_post_link();
-	}
-} else {
+if ( ! function_exists( 'prism_next_post_link' ))  {
 	/**
 	 * Create the next post link on single pages
 	 * 
-	 * Override: childtheme_override_next_post_link
 	 * Filter: prism_next_post_link_args
 	 */
 	function prism_next_post_link() {
@@ -1622,20 +1327,11 @@ if (function_exists('childtheme_override_next_post_link'))  {
 } // end next_post_link
 
 
-if (function_exists('childtheme_override_author_info_avatar'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_author_info_avatar() {
-		childtheme_override_author_info_avatar();
-	}
-} else {
+if ( ! function_exists( 'prism_author_info_avatar' ))  {
 	/**
 	 * Create an avatar image for the author info
 	 * 
 	 * Includes the hCard-compliant photo class on the image. Located in author.php
-	 * 
-	 * Override: childtheme_override_author_info_avatar
 	 */
 	function prism_author_info_avatar() {
     
@@ -1648,20 +1344,11 @@ if (function_exists('childtheme_override_author_info_avatar'))  {
 } // end author_info_avatar
 
 
-if (function_exists('childtheme_override_cats_meow'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_cats_meow() {
-		return childtheme_override_cats_meow();
-	}
-} else {
+if ( ! function_exists( 'prism_cats_meow' ))  {
 	/**
 	 * Create a category list with all categories except the current one
 	 * 
 	 * Used in post footer on category archives (redundant)
-	 * 
-	 * Override: childtheme_override_cats_meow
 	 */
 	function prism_cats_meow($glue) {
 		$current_cat = single_cat_title( '', false );
@@ -1681,20 +1368,11 @@ if (function_exists('childtheme_override_cats_meow'))  {
 } // end cats_meow
 
 
-if (function_exists('childtheme_override_tag_ur_it'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_tag_ur_it() {
-		return childtheme_override_tag_ur_it();
-	}
-} else {
+if ( ! function_exists( 'prism_tag_ur_it' ))  {
 	/**
 	 * Create a tag list with all tags except the current one
 	 * 
 	 * Used in post footer on tag archives (redundant)
-	 * 
-	 * Override: childtheme_override_tag_ur_it
 	 */
 	function prism_tag_ur_it($glue) {
 		$current_tag = single_tag_title( '', '',  false );

@@ -67,14 +67,8 @@ function prism_after() {
 } // end prism_after
 
 
-if (function_exists('childtheme_override_subsidiaries'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_subsidiaries() {
-		childtheme_override_subsidiaries();
-	}
-} else {
+if ( ! function_exists('prism_subsidiaries') )  {
+
 	/**
 	 * Create the subsidiary widgets areas in footer
 	 * 
@@ -96,14 +90,7 @@ if (function_exists('childtheme_override_subsidiaries'))  {
 add_action('prism_footer', 'prism_subsidiaries', 10);
 
 
-if (function_exists('childtheme_override_siteinfoopen'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_siteinfoopen() {
-		childtheme_override_siteinfoopen();
-	}
-} else {
+if ( ! function_exists( 'prism_siteinfoopen') )  {
 	/**
 	 * Open the #siteinfo div
 	 * 
@@ -121,14 +108,7 @@ if (function_exists('childtheme_override_siteinfoopen'))  {
 add_action('prism_footer', 'prism_siteinfoopen', 20);
   
  
-if (function_exists('childtheme_override_siteinfo'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_siteinfo() {
-		childtheme_override_siteinfo();
-	}
-} else {
+if ( ! function_exists('prism_siteinfo'))  {
 	/**
 	 * Display the footer text from theme options within the #siteinfo div
 	 * 
@@ -143,14 +123,7 @@ if (function_exists('childtheme_override_siteinfo'))  {
 add_action('prism_footer', 'prism_siteinfo', 30);
 
    
-if (function_exists('childtheme_override_siteinfoclose'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_siteinfoclose() {
-		childtheme_override_siteinfoclose();
-	}
-} else {
+if ( ! function_exists('prism_siteinfoclose') )  {
 	/**
 	 * Close the #siteinfo div
 	 * 

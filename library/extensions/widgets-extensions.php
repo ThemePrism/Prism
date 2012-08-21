@@ -207,14 +207,7 @@ function prism_presetwidgets() {
 	do_action( 'prism_presetwidgets' );
 }
 
-if ( function_exists( 'childtheme_override_init_presetwidgets') )  {
-    /**
-     * @ignore
-     */
-    function prism_init_presetwidgets() {
-    	childtheme_override_init_presetwidgets();
-    }
-} else {
+if ( ! function_exists( 'prism_init_presetwidgets' ) )  {
 	/**
 	 * Sets the "pre-set" widgets in options table
 	 */
@@ -378,117 +371,6 @@ function prism_3rd_subsidiary_aside() {
 	}
 }
 
-/**
- * Displays the Index Top
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_index_top() {
-	if ( is_active_sidebar( 'index-top' ) ) {
-		echo prism_before_widget_area( 'index-top' );
-		dynamic_sidebar('index-top');
-		echo prism_after_widget_area( 'index-top' );
-	}
-}
-
-/**
- * Displays the Index Insert
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_index_insert() {
-	if ( is_active_sidebar( 'index-insert' ) ) {
-		echo prism_before_widget_area( 'index-insert' );
-		dynamic_sidebar( 'index-insert' );
-		echo prism_after_widget_area( 'index-insert' );
-	}
-}
-
-/**
- * Displays the Index Bottom
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_index_bottom() {
-	if ( is_active_sidebar( 'index-bottom' ) ) {
-		echo prism_before_widget_area( 'index-bottom' );
-		dynamic_sidebar( 'index-bottom' );
-		echo prism_after_widget_area( 'index-bottom' );
-	}
-}
-
-/**
- * Displays the Single Top
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_single_top() {
-	if ( is_active_sidebar( 'single-top' ) ) {
-		echo prism_before_widget_area( 'single-top' );
-		dynamic_sidebar( 'single-top' );
-		echo prism_after_widget_area( 'single-top' );
-	}
-}
-
-/**
- * Displays the Single Insert
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_single_insert() {
-	if ( is_active_sidebar( 'single-insert' ) ) {
-		echo prism_before_widget_area( 'single-insert' );
-		dynamic_sidebar( 'single-insert' );
-		echo prism_after_widget_area( 'single-insert' );
-	}
-}
-
-/**
- * Displays the Single Bottom
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_single_bottom() {
-	if ( is_active_sidebar( 'single-bottom' ) ) {
-		echo prism_before_widget_area( 'single-bottom' );
-		dynamic_sidebar( 'single-bottom' );
-		echo prism_after_widget_area( 'single-bottom' );
-	}
-}
-
-/**
- * Displays the Page Top
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_page_top() {
-	if ( is_active_sidebar( 'page-top' ) ) {
-		echo prism_before_widget_area( 'page-top' );
-		dynamic_sidebar( 'page-top' );
-		echo prism_after_widget_area( 'page-top' );
-	}
-}
-
-/**
- * Displays the Page Bottom
- *
- * @uses prism_before_widget_area
- * @uses prism_after_widget_area
- */
-function prism_page_bottom() {
-	if ( is_active_sidebar( 'page-bottom' ) ) {
-		echo prism_before_widget_area( 'page-bottom' );
-		dynamic_sidebar( 'page-bottom' );
-		echo prism_after_widget_area( 'page-bottom' );
-	}
-}
 
 /**
  * Returns the opening CSS markup before the widget area

@@ -6,16 +6,8 @@
  * @subpackage DynamicClasses
  */
  
-if ( function_exists( 'childtheme_override_body' ) )  {
-	/**
-	 * @ignore
-	 */function prism_body() {
-		childtheme_override_body();
-	}
-} else {
-	/**
-	 * @ignore
-	 */function prism_body() {
+if ( ! function_exists( 'prism_body' ) )  {
+	function prism_body() {
 		prism_bodyopen();
 	}
 }
@@ -63,14 +55,7 @@ add_filter( 'comment_class', 'prism_add_comment_class', 20 );
 
 
 
-if ( function_exists( 'childtheme_override_date_classes' ) )  {
-	/**
-	 * @ignore
-	 */
-	function prism_date_classes() {
-		childtheme_override_date_classes();
-	}
-} else {
+if ( ! function_exists( 'prism_date_classes' ) )  {
 	/**
 	 * Generates time and date based classes relative to GMT (UTC)
 	 */

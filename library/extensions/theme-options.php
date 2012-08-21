@@ -12,19 +12,16 @@
  * @subpackage ThemeOptions
  */
  
-/**
- * Sets default options in database if not pre-existent.
- * Registers with WP settings API, adds a main section with three settings fields.
- * 
- * Override: childtheme_override_opt_init
- *
- * @since Prism 1.0
- */
-if (function_exists('childtheme_override_opt_init')) {
-	function prism_opt_init() {
-		childtheme_override_opt_init();
-	}
-} else {
+
+if ( ! function_exists( 'prism_opt_init' )) {
+	/**
+	 * Sets default options in database if not pre-existent.
+	 * Registers with WP settings API, adds a main section with three settings fields.
+	 * 
+	 * Override: prism_opt_init
+	 *
+	 * @since Prism 1.0
+	 */
 	function prism_opt_init() {
 
 		// Retrieve current options from database	
@@ -140,21 +137,16 @@ function prism_opt_add_page() {
 add_action( 'admin_menu', 'prism_opt_add_page' );
 
 
-/**
- * Generates the help texts and help sidebar items for the options screen
- *
- * Filter: prism_theme_opt_help_txt <br>
- * Filter: prism_theme_opt_help_sidebar <br>
- * Override: childtheme_override_opt_page_help <br>
- * 
- * @since Prism 1.0 
- * @todo remove conditional compatibilty  WP version > 3.3 and remove fallback to 3.2
- */
-if (function_exists('childtheme_override_opt_page_help')) {
-	function prism_opt_page_help() {
-		childtheme_override_opt_page_help();
-	}
-} else {
+
+if ( ! function_exists( 'prism_opt_page_help' )) {
+	/**
+	 * Generates the help texts and help sidebar items for the options screen
+	 *
+	 * Filter: prism_theme_opt_help_txt <br>
+	 * Filter: prism_theme_opt_help_sidebar <br>
+	 * 
+	 * @since Prism 1.0 
+	 */
 	function prism_opt_page_help() {	
 		
 		$screen = get_current_screen();
@@ -183,7 +175,6 @@ if (function_exists('childtheme_override_opt_page_help')) {
  * Renders the them options page
  *
  * @since Prism 1.0
- * @todo: remove get_current_theme()
  */
 function prism_do_opt_page() { ?>
 
@@ -191,12 +182,8 @@ function prism_do_opt_page() { ?>
 	<?php screen_icon(); ?>
 
 	<?php 
-	if ( function_exists( 'wp_get_theme' ) ) {
         $frameworkData = wp_get_theme();
         $theme = $frameworkData->display( 'Name', false );
- 	} else {
- 		$theme = get_current_theme();
- 	} 
  	?>
 
 	<h2><?php printf( _x( '%s Theme Options', '{$current theme} Theme Options', 'prism' ), $theme ); ?></h2>
@@ -268,21 +255,16 @@ function prism_do_footer_opt() {
 }
 
 
-
-/**
- * Validates theme options form post data.
- * Provides error reporting for invalid input.
- *
- * Override: childtheme_override_validate_opt <br>
- * Filter: prism_theme_opt_validation
- * 
- * @since Prism 1.0 
- */
-if (function_exists('childtheme_override_validate_opt')) {
-	function prism_prism_validate_opt() {
-		childtheme_override_validate_opt();
-	}
-} else {
+if ( ! function_exists( 'prism_validate_opt' )) {
+	/**
+	 * Validates theme options form post data.
+	 * Provides error reporting for invalid input.
+	 *
+	 * Override: prism_validate_opt <br>
+	 * Filter: prism_theme_opt_validation
+	 * 
+	 * @since Prism 1.0 
+	 */
  	function prism_validate_opt($input){
  	   $output = prism_get_wp_opt( 'prism_theme_opt', prism_default_opt() );	
  	   

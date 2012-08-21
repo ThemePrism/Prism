@@ -6,20 +6,12 @@
  * @subpackage DiscussionExtensions
  */
  
-if (function_exists('childtheme_override_commentmeta'))  {
-	/**
-	 * @ignore
-	 */
-	function prism_commentmeta() {
-		childtheme_override_commentmeta();
-	}
-} else {
+if ( ! function_exists( 'prism_commentmeta' ))  {
 	/**
 	 * Create comment meta
 	 * 
 	 * Located in discussion.php
 	 * 
-	 * Override: childtheme_override_commentmeta <br>
 	 * Filter: prism_commentmeta
 	 */
 	function prism_commentmeta($print = TRUE) {
