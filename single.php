@@ -24,10 +24,7 @@
 				// filter for manipulating the element that wraps the content 
 				echo apply_filters( 'prism_open_id_content', '<div id="content">' . "\n\n" );
 							
-	            // start the loop
-	            while ( have_posts() ) : the_post();
-    	        
-    	        // create the navigation above the content
+	            // create the navigation above the content
 				prism_navigation_above();
 		
     	        // action hook creating the single post
@@ -39,8 +36,6 @@
        			// action hook for calling the comments_template
     	        prism_comments_template();
     	        
-    	        // end the loop
-        		endwhile;
 		
 			?>
 		

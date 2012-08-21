@@ -436,29 +436,30 @@ if (function_exists('childtheme_override_nav_above'))  {
 add_action('prism_navigation_above', 'prism_nav_above', 2);
 
 
-if (function_exists('childtheme_override_archive_loop'))  {
+if (function_exists('childtheme_override_default_loop'))  {
 	/**
 	 * @ignore
 	 */
-	function prism_archive_loop() {
-		childtheme_override_archive_loop();
+	function prism_default_loop() {
+		childtheme_override_default_loop();
 	}
 } else {
 	/**
-	 * The Archive loop
+	 * The Default loop
 	 * 
-	 * Located in archive.php
+	 * Easily change all loops at once
 	 * 
-	 * Override: childtheme_override_archive_loop
+	 * Override: childtheme_override_default_loop
 	 */
-	function prism_archive_loop() {
+	function prism_default_loop() {
+
 		while ( have_posts() ) : the_post(); 
 
 				// action hook for insterting content above #post
 				prism_abovepost(); 
 				?>
 
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
 
 				<?php
 
@@ -474,13 +475,34 @@ if (function_exists('childtheme_override_archive_loop'))  {
 					
 					<?php prism_postfooter(); ?>
 					
-				</div><!-- #post -->
+				</article><!-- #post -->
 
 			<?php 
 				// action hook for insterting content below #post
 				prism_belowpost();
 		
 		endwhile;
+	}
+} // end default_loop
+
+
+if (function_exists('childtheme_override_archive_loop'))  {
+	/**
+	 * @ignore
+	 */
+	function prism_archive_loop() {
+		childtheme_override_archive_loop();
+	}
+} else {
+	/**
+	 * The Default loop
+	 * 
+	 * Located in archive.php
+	 * 
+	 * Override: childtheme_override_archive_loop
+	 */
+	function prism_archive_loop() {
+		prism_default_loop();
 	}
 } // end archive_loop
 
@@ -503,36 +525,7 @@ if (function_exists('childtheme_override_author_loop'))  {
 	 * Override: childtheme_override_author_loop
 	 */
 	function prism_author_loop() {
-		rewind_posts();
-		while ( have_posts() ) : the_post(); 
-
-				// action hook for insterting content above #post
-				prism_abovepost();
-				?>
-
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     				
-					<div class="entry-content">
-					
-						<?php prism_content(); ?>
-
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-
-			<?php 
-				// action hook for insterting content below #post
-				prism_belowpost();
-		
-		endwhile;
+		prism_default_loop();
 	}
 } // end author_loop
 
@@ -555,35 +548,7 @@ if (function_exists('childtheme_override_category_loop'))  {
 	 * Override: childtheme_override_category_loop
 	 */
 	function prism_category_loop() {
-		while ( have_posts() ) : the_post(); 
-
-				// action hook for insterting content above #post
-				prism_abovepost();
-				?>
-	
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     			
-					<div class="entry-content">
-						
-						<?php prism_content(); ?>
-	
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-
-			<?php 
-				// action hook for insterting content below #post
-				prism_belowpost();
-		
-		endwhile;
+		prism_default_loop();
 	}
 } // end category_loop
 
@@ -606,47 +571,7 @@ if (function_exists('childtheme_override_index_loop'))  {
 	 * Override: childtheme_override_index_loop
 	 */
 	function prism_index_loop() {
-		
-		// Count the number of posts so we can insert a widgetized area
-		$count = 1;
-		while ( have_posts() ) : the_post();
-
-				// action hook for insterting content above #post
-				prism_abovepost();
-				?>
-
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     				
-					<div class="entry-content">
-					
-						<?php prism_content(); ?>
-
-						<?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'prism')),
-													'after' => '</div>')); ?>
-					
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-
-			<?php 
-				// action hook for insterting content below #post
-				prism_belowpost();
-				
-				comments_template();
-
-				if ( $count == prism_get_theme_opt( 'index_insert' ) ) {
-					get_sidebar('index-insert');
-				}
-				$count = $count + 1;
-		endwhile;
+		prism_default_loop();
 	}
 } // end index_loop
 
@@ -669,34 +594,7 @@ if (function_exists('childtheme_override_single_post'))  {
 	 * Override: childtheme_override_single_post
 	 */
 	function prism_single_post() { 
-
-				// action hook for insterting content above #post
-				prism_abovepost();
-				?>
-			
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     				
-					<div class="entry-content">
-					
-						<?php prism_content(); ?>
-
-						<?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'prism')),
-													'after' => '</div>')); ?>
-						
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-		<?php
-			// action hook for insterting content below #post
-			prism_belowpost();
+		prism_default_loop();
 	}
 } // end single_post
 
@@ -719,35 +617,7 @@ if (function_exists('childtheme_override_search_loop'))  {
 	 * Override: childtheme_override_search_loop
 	 */
 	function prism_search_loop() {
-		while ( have_posts() ) : the_post(); 
-
-				// action hook for insterting content above #post
-				prism_abovepost();
-				?>
-
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     				
-					<div class="entry-content">
-					
-						<?php prism_content(); ?>
-
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-
-			<?php 
-				// action hook for insterting content below #post
-				prism_belowpost();
-		
-		endwhile;
+		prism_default_loop();
 	}
 } // end search_loop
 
@@ -770,35 +640,7 @@ if (function_exists('childtheme_override_tag_loop'))  {
 	 * Override: childtheme_override_tag_loop
 	 */
 	function prism_tag_loop() {
-		while ( have_posts() ) : the_post(); 
-
-				// action hook for insterting content above #post
-				prism_abovepost(); 
-				?>
-
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?> > 
-
-				<?php
-
-	            	// creating the post header
-	            	prism_postheader();
-	            ?>
-     				
-					<div class="entry-content">
-					
-						<?php prism_content(); ?>
-
-					</div><!-- .entry-content -->
-					
-					<?php prism_postfooter(); ?>
-					
-				</div><!-- #post -->
-
-			<?php 
-				// action hook for insterting content below #post
-				prism_belowpost();
-		
-		endwhile;
+		prism_default_loop();
 	}
 } // end tag_loop
 
@@ -860,6 +702,8 @@ if (function_exists('childtheme_override_postheader'))  {
  	   } else {
  	       $postheader = prism_postheader_posttitle() . prism_postheader_postmeta();    
  	   }
+
+ 	   $postheader = '<header class="entry-header">'. $postheader . ' </header>';
  	   
  	   echo apply_filters( 'prism_postheader', $postheader ); // Filter to override default post header
 	}
@@ -1352,14 +1196,13 @@ if (function_exists('childtheme_override_postfooter'))  {
 	    
 		// Check for "Page" post-type and logged in user to show edit link
 	    if ( $post_type == 'page' && current_user_can('edit_posts') ) {
-	        $postfooter = '<div class="entry-utility">' . prism_postfooter_posteditlink();
-	        $postfooter .= "</div><!-- .entry-utility -->\n";
+	        $postfooter = prism_postfooter_posteditlink();
 	    // Display nothing for logged out users on a "Page" post-type 
 	    } elseif ( $post_type == 'page' ) {
 	        $postfooter = '';
 	    // For post-types other than "Pages" press on
 	    } else {
-	    	$postfooter = '<div class="entry-utility">';
+	    	$postfooter = '';
 	        if ( is_single() ) {
 	        	$post_type_archive_link = ( function_exists( 'get_post_type_archive_link' )  ? get_post_type_archive_link( $post_type ) :  home_url( '/?post_type=' . $post_type ) );
 	        	if ( prism_is_custom_post_type() && $post_type_obj->has_archive ) {
@@ -1389,8 +1232,11 @@ if (function_exists('childtheme_override_postfooter'))  {
 	        	} 
 	        	$postfooter .= ' ' . prism_postfooter_posteditlink();
 	    	}   
-	    	$postfooter .= "\n\n\t\t\t\t\t</div><!-- .entry-utility -->\n";    
 	    }
+
+	    if($postfooter != '')
+	    	$postfooter = '<footer class="entry-utility">' . $postfooter . "</footer><!-- .entry-utility -->\n";
+
 	    // Put it on the screen
 	    echo apply_filters( 'prism_postfooter', $postfooter ); // Filter to override default post footer
     }
