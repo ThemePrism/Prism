@@ -752,7 +752,7 @@ li.content-column {
 .widget_tag_cloud {
     margin:0 0 22px 0;
 }
-.aside #searchsubmit {
+.aside .searchsubmit {
 	display: none;	
 }
 /*
