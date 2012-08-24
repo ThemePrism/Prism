@@ -51,7 +51,7 @@ function prism_abovemainasides() {
  * Regular hook for primary widget area
  */
 function prism_widget_area_primary_aside() {
-    do_action('widget_area_primary_aside');
+    do_action('prism_widget_area_primary_aside');
 }
 
 
@@ -73,7 +73,7 @@ function prism_betweenmainasides() {
  * Regular hook for secondary widget area
  */
 function prism_widget_area_secondary_aside() {
-    do_action('widget_area_secondary_aside');
+    do_action('prism_widget_area_secondary_aside');
 }
 
 
@@ -165,7 +165,7 @@ function prism_subsidiaryopen() {
     <?php
     }
 }
-add_action('widget_area_subsidiaries', 'prism_subsidiaryopen', 10);
+add_action('prism_widget_area_subsidiaries', 'prism_subsidiaryopen', 10);
 
 
 /**
@@ -188,7 +188,7 @@ function prism_add_before_first_sub() {
         prism_before_first_sub();
     }
 }
-add_action('widget_area_subsidiaries', 'prism_add_before_first_sub',20);
+add_action('prism_widget_area_subsidiaries', 'prism_add_before_first_sub',20);
 
 	
 /**
@@ -198,7 +198,7 @@ add_action('widget_area_subsidiaries', 'prism_add_before_first_sub',20);
  * Regular hook for the subsidiary widget areas
  */
 function prism_widget_area_subsidiaries() {
-    do_action('widget_area_subsidiaries');
+    do_action('prism_widget_area_subsidiaries');
 }
 
 
@@ -222,7 +222,7 @@ function prism_add_between_firstsecond_sub() {
         prism_between_firstsecond_sub();
     }
 }
-add_action('widget_area_subsidiaries', 'prism_add_between_firstsecond_sub',40);
+add_action('prism_widget_area_subsidiaries', 'prism_add_between_firstsecond_sub',40);
 
 
 /**
@@ -245,7 +245,7 @@ function prism_add_between_secondthird_sub() {
         prism_between_secondthird_sub();
     }
 }
-add_action('widget_area_subsidiaries', 'prism_add_between_secondthird_sub',60);
+add_action('prism_widget_area_subsidiaries', 'prism_add_between_secondthird_sub',60);
 
 
 /**
@@ -268,7 +268,7 @@ function prism_add_after_third_sub() {
         prism_after_third_sub();
     }
 }
-add_action('widget_area_subsidiaries', 'prism_add_after_third_sub',80);
+add_action('prism_widget_area_subsidiaries', 'prism_add_after_third_sub',80);
 
 
 /**
@@ -284,4 +284,4 @@ function prism_subsidiaryclose() {
     <?php
     }
 }
-add_action('widget_area_subsidiaries', 'prism_subsidiaryclose', 200);
+add_action('prism_widget_area_subsidiaries', 'prism_subsidiaryclose', 200);
