@@ -928,14 +928,9 @@ if ( ! function_exists('prism_404_content') )  {
   			
 			<div class="entry-content">
 				<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'prism' ) ?></p>
-			</div><!-- .entry-content -->
+			</div><!-- .entry-content -->		
 			
-			<form id="error404-searchform" method="get" action="<?php echo home_url(); ?>/">
-				<div>
-					<input id="error404-s" name="s" type="text" value="<?php the_search_query(); ?>" size="40" />
-					<input id="error404-searchsubmit" name="searchsubmit" type="submit" value="<?php esc_attr_e( 'Find', 'prism' ); ?>" />
-				</div>
-			</form>
+			<?php prism_search_form( '404' ) ?>
 <?php }
 } // end 404_content
 

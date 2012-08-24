@@ -21,34 +21,41 @@
  * @see Prism_Widget_Search
  * @link http://codex.wordpress.org/Function_Reference/get_search_form Codex: get_search_form()
  */
-function prism_search_form() {
+function prism_search_form( $id = null ) {
 	$search_form_length = apply_filters('prism_search_form_length', '32');
-	$search_form  = "\n\t\t\t\t\t\t";
-	$search_form .= '<form id="searchform" method="get" action="' . home_url() .'/">';
-	$search_form .= "\n\n\t\t\t\t\t\t\t";
-	$search_form .= '<div>';
-	$search_form .= "\n\t\t\t\t\t\t\t\t";
-	if (is_search()) {
-	    	$search_form .= '<input id="s" name="s" type="text" value="' . esc_html ( stripslashes( $_GET['s'] ) ) .'" size="' . $search_form_length . '" tabindex="1" />';
-	} else {
-	    	$value = __( 'To search, type and hit enter', 'prism' );
-	    	$value = apply_filters( 'search_field_value',$value );
-	    	$search_form .= '<input id="s" name="s" type="text" value="' . $value . '" onfocus="if (this.value == \'' . $value . '\') {this.value = \'\';}" onblur="if (this.value == \'\') {this.value = \'' . $value . '\';}" size="'. $search_form_length .'" tabindex="1" />';
-	}
-	$search_form .= "\n\n\t\t\t\t\t\t\t\t";
-	
-	$search_submit = '<input id="searchsubmit" name="searchsubmit" type="submit" value="' . __('Search', 'prism') . '" tabindex="2" />';
-	
-	$search_form .= apply_filters('prism_search_submit', $search_submit);
-	
-	$search_form .= "\n\t\t\t\t\t\t\t";
-	$search_form .= '</div>';
-	
-	$search_form .= "\n\n\t\t\t\t\t\t";
-	$search_form .= '</form>' . "\n\n\t\t\t\t\t";
-	
-	echo apply_filters('prism_search_form', $search_form);
+	switch( $id ) {
+        case '404' :      
+			$search_form  = '<form id="error404-searchform" method="get" action="' . home_url() . '/">';
+			$search_form .= '	<div>';
+			$search_form .= '		<input id="error404-s" name="s" type="search" value="' . get_search_query() . '" size="' . $search_form_length . '" />';
+			$search_form .= '		<input id="error404-searchsubmit" name="searchsubmit" type="submit" value="' . esc_attr__( 'Find', 'prism' ) . '" />';
+			$search_form .= '	</div>';
+			$search_form .= '</form>';
+			break;
+        case 'search-result':
+            $search_form .= '<form id="noresults-searchform" method="get" action="' . home_url() . '/">';
+			$search_form .= '	<div>';
+			$search_form .= '		<input id="noresults-s" name="s" type="search" value="' . get_search_query() . '" size="' . $search_form_length . '" />';
+			$search_form .= '		<input id="noresults-searchsubmit" name="searchsubmit" type="submit" value="' . esc_attr__( 'Find', 'prism' ) . '" />';
+			$search_form .= '	</div>';
+			$search_form .= '</form>';
+			break;
+        default:
+            $placeholder = __( 'To search, type and hit enter', 'prism' );
+			$placeholder = apply_filters( 'prism_search_field_value',$placeholder );
+
+			$search_form .= '<form id="searchform" method="get" action="' . home_url() .'/">';
+			$search_form .= '	<div>';
+			$search_form .= '		<input id="s" name="s" type="search" placeholder="' . $placeholder . '" value="' . $placeholder . '" onfocus="if (this.value == \'' . $placeholder . '\') {this.value = \'\';}" onblur="if (this.value == \'\') {this.value = \'' . $placeholder . '\';}" size="'. $search_form_length .'" tabindex="1" />';
+			$search_submit = '		<input id="searchsubmit" name="searchsubmit" type="submit" value="' . __('Search', 'prism') . '" tabindex="2" />';
+			$search_form .= apply_filters('prism_search_submit', $search_submit);
+			$search_form .= '	</div>';
+			$search_form .= '</form>';
+			break;
+    }
+	echo apply_filters( 'prism_search_form', $search_form, $id );
 }
+
 
 /**
  * Defines the array for creating and displaying the widgetized areas

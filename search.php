@@ -51,31 +51,21 @@
 	           		prism_abovepost();
 	           ?>
 
-				<div id="post-0" class="post noresults">
-					
-					<h1 class="entry-title"><?php _e( 'Nothing Found', 'prism' ) ?></h1>
-					
-					<div class="entry-content">
+					<div id="post-0" class="post noresults">
 						
-						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'prism' ) ?></p>
-					
-					</div><!-- .entry-content -->
-					
-					<form id="noresults-searchform" method="get" action="<?php echo home_url() ?>/">
+						<h1 class="entry-title"><?php _e( 'Nothing Found', 'prism' ) ?></h1>
 						
-						<div>
+						<div class="entry-content">
 							
-							<input id="noresults-s" name="s" type="text" value="<?php the_search_query();  ?>" size="40" />
-							
-							<input id="noresults-searchsubmit" name="searchsubmit" type="submit" value="<?php esc_attr_e( 'Find', 'prism' ) ?>" />
+							<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'prism' ) ?></p>
 						
-						</div>
+						</div><!-- .entry-content -->
+						
+						<?php prism_search_form( 'search-result' ) ?>
 					
-					</form>
-				
-				</div><!-- #post -->
-	
-	            <?php
+					</div><!-- #post -->
+		
+		            <?php
 	            	// action hook for inserting content below #post
 	            	prism_belowpost();
 	            }
