@@ -634,7 +634,7 @@ if ( ! function_exists( 'prism_postheader_posteditlink' ))  {
 } // end postheader_posteditlink
 
 
-if ( function_exists( 'prism_postheader_posttitle' ))  {
+if ( ! function_exists( 'prism_postheader_posttitle' ))  {
 	/**
 	 * Create the post title
 	 * 
