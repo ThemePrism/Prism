@@ -84,7 +84,6 @@ if ( ! function_exists('prism_subsidiaries') )  {
 		prism_belowsubasides();
    	}
 }
-
 add_action('prism_footer', 'prism_subsidiaries', 10);
 
 
