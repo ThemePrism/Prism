@@ -21,23 +21,52 @@ function prism_sidebar() {
 	$show = TRUE;
 	$show = apply_filters('prism_sidebar', $show);
 	
+    // action hook for placing content before the main asides
+    prism_beforesidebar();
+
 	if ($show)
     	get_sidebar();
+
+    // action hook for placing content after the main asides
+    prism_aftersidebar();
 	
 	return;
 } // end prism_sidebar
 
 
 /* 
- * Main Aside Hooks
+ * Sidebar Hooks
  */
 
+/**
+ * Register action hook: prism_beforesidebar 
+ *
+ * Just before the main sidebar in prism_sidebar()
+ * independent of whether the sidebar is called or not
+ */
+function prism_beforesidebar() {
+    do_action('prism_beforesidebar');
+}
+
+/**
+ * Register action hook: prism_aftersidebar 
+ *
+ * Just after the main sidebar in prism_sidebar()
+ * independent of whether the sidebar is called or not
+ */
+function prism_aftersidebar() {
+    do_action('prism_aftersidebar');
+}
+
+/* 
+ * Main Aside Hooks
+ */
 
 /**
  * Register action hook: prism_abovemainasides 
  *
  * Located in sidebar.php
- * Just before the main asides (commonly used as sidebars)
+ * Just above the main asides (commonly used as sidebars)
  */
 function prism_abovemainasides() {
     do_action('prism_abovemainasides');
@@ -45,7 +74,7 @@ function prism_abovemainasides() {
 
 
 /**
- * Register action hook: widget_area_primary_aside 
+ * Register action hook: prism_widget_area_primary_aside 
  *
  * Located in sidebar.php
  * Regular hook for primary widget area
@@ -81,11 +110,12 @@ function prism_widget_area_secondary_aside() {
  * Register action hook: prism_belowmainasides 
  *
  * Located in sidebar.php
- * Just after the main asides (commonly used as sidebars)
+ * Just below the main asides (commonly used as sidebars)
  */
 function prism_belowmainasides() {
     do_action('prism_belowmainasides');
 }
+
 
 
 /*
