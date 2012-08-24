@@ -401,8 +401,8 @@ function prism_3rd_subsidiary_aside() {
  * @uses prism_before_widget_area
  * @uses prism_after_widget_area
  */
-function prism_404_aside() {
-	if ( is_active_sidebar( '404-aside' ) ) {
+function prism_404_aside() { 
+	if ( is_active_sidebar( '404-aside' ) ) { 
 		echo prism_before_widget_area( '404-aside' );
 		dynamic_sidebar('404-aside');
 		echo prism_after_widget_area( '404-aside' );

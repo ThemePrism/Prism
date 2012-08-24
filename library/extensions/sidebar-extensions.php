@@ -110,7 +110,7 @@ function prism_above404aside() {
  * Located in sidebar-404.php
  * Regular hook for the '404-aside' widget area
  */
-function prism_widget_area_index_top() {
+function prism_widget_area_404_aside() {
     do_action('prism_widget_area_404_aside');
 }
 
