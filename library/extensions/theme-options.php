@@ -35,7 +35,6 @@ if ( ! function_exists( 'prism_opt_init' )) {
 		
 		add_settings_section ('prism_opt_section_main', '', 'prism_do_opt_section_main', 'prism_theme_opt');
 	
-		add_settings_field ('prism_insert_opt', __('Index Insert Position', 'prism')	, 'prism_do_insert_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
 		add_settings_field ('prism_auth_opt',   __('Info on Author Page'	, 'prism')	, 'prism_do_auth_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
 		add_settings_field ('prism_footer_opt', __('Text in Footer'	, 'prism')		, 'prism_do_footer_opt'	, 'prism_theme_opt', 'prism_opt_section_main');
 	
@@ -214,18 +213,6 @@ function prism_do_opt_section_main() {
 }
 
 
-/**
- * Renders Index Insert elements
- *
- * @since Prism 1.0
- */
-function prism_do_insert_opt() { 
-?>
-	<input type="text" maxlength="4" size="4" value="<?php esc_attr_e( (prism_get_theme_opt('index_insert') ) ) ;  ?>" id="thm_insert_position" name="prism_theme_opt[index_insert]">
-	<label for="thm_insert_position"><?php _e('The Index Insert widget area will appear after this post number. Entering nothing or 0 will disable this feature.','prism'); ?></label>
-<?php 
-}
-
 
 /**
  * Renders Author Info elements
@@ -264,19 +251,6 @@ if ( ! function_exists( 'prism_validate_opt' )) {
 	 */
  	function prism_validate_opt($input){
  	   $output = prism_get_wp_opt( 'prism_theme_opt', prism_default_opt() );	
- 	   
- 	   // Index Insert position must be a non-negative number
- 	   if ( !is_numeric( $input['index_insert'] ) || $input['index_insert'] < 0 )  {
- 	   		add_settings_error(
- 	   		'prism_theme_opt',
- 	   		'prism_insert_opt',
- 	   		__('The index insert position value must be a number equal to or greater than zero. This setting has been reverted to the previous value.', 'prism' ),
- 	   		'error'
- 	   		);
- 	   } else {
- 	   	// A sanitize numeric value to ensure a whole number
- 	   	$output['index_insert'] = intval( $input['index_insert'] );
- 	   }
  	   
  	   // Author Info CheckBox value either 1(yes) or 0(no)
  	   if ( isset( $input['author_info'] ) ) {
