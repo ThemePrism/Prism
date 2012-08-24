@@ -25,7 +25,7 @@ function prism_search_form( $id = null ) {
 	$search_form_length = apply_filters('prism_search_form_length', '32');
 	switch( $id ) {
         case '404' :      
-			$search_form  = '<form id="error404-searchform" method="get" action="' . home_url() . '/">';
+			$search_form  = '<form id="error404-searchform" class="searchform" method="get" action="' . home_url() . '/">';
 			$search_form .= '	<div>';
 			$search_form .= '		<input id="error404-s" class="s" name="s" type="search" value="' . get_search_query() . '" size="' . $search_form_length . '" />';
 			$search_form .= '		<input id="error404-searchsubmit" class="searchsubmmit" name="searchsubmit" type="submit" value="' . esc_attr__( 'Find', 'prism' ) . '" />';
@@ -33,7 +33,7 @@ function prism_search_form( $id = null ) {
 			$search_form .= '</form>';
 			break;
         case 'search-result':
-            $search_form .= '<form id="noresults-searchform" method="get" action="' . home_url() . '/">';
+            $search_form .= '<form id="noresults-searchform" class="searchform" method="get" action="' . home_url() . '/">';
 			$search_form .= '	<div>';
 			$search_form .= '		<input id="noresults-s" class="s" name="s" type="search" value="' . get_search_query() . '" size="' . $search_form_length . '" />';
 			$search_form .= '		<input id="noresults-searchsubmit" class="name="searchsubmit" type="submit" value="' . esc_attr__( 'Find', 'prism' ) . '" />';

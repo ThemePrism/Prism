@@ -752,6 +752,9 @@ li.content-column {
 .widget_tag_cloud {
     margin:0 0 22px 0;
 }
+.searchform {
+    margin-bottom: 22px;
+}
 .aside .searchsubmit {
 	display: none;	
 }
