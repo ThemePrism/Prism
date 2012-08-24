@@ -26,20 +26,11 @@ function prism_init() {
 
 
 /**
- * prism_theme_setup & childtheme_override_theme_setup
- *
- * Override: childtheme_override_theme_setup
+ * prism_theme_setup 
  *
  * @since Prism 1.0
  */
-if ( function_exists('childtheme_override_theme_setup') ) {
-	/**
-	 * @ignore
-	 */
-	function prism_theme_setup() {
-		childtheme_override_theme_setup();
-	}
-} else {
+if ( ! function_exists( 'prism_theme_setup' ) ) {
 	/**
 	 * prism_theme_setup
 	 *
@@ -125,18 +116,10 @@ function prism_child_init() {
 add_action('after_setup_theme', 'prism_child_init', 20);
 
 
-if ( function_exists('childtheme_override_init_navmenu') )  {
-	/**
-	 * @ignore
-	 */
-	 function prism_init_navmenu() {
-    	childtheme_override_init_navmenu();
-    }
-} else {
+if ( ! function_exists( 'prism_init_navmenu' ) )  {
 	/**
 	 * Register primary nav menu
 	 * 
-	 * Override: childtheme_override_init_navmenu
 	 * Filter: prism_primary_menu_id
 	 * Filter: prism_primary_menu_name
 	 */
