@@ -161,7 +161,22 @@ function prism_widgets_array() {
 			'action_hook'	=> 'widget_area_subsidiaries',
 			'function'		=> 'prism_3rd_subsidiary_aside',
 			'priority'		=> 70,
-		)
+		),
+		'404 Aside' => array(
+			'admin_menu_order' => 600,
+			'args' => array (
+				'name' => __( '404 Aside', 'prism' ),
+				'id' => '404-aside',
+                'description' => __('The widget area displayed beneath the 404 page content.', 'prism'),
+				'before_widget' => prism_before_widget(),
+				'after_widget' => prism_after_widget(),
+				'before_title' => prism_before_title(),
+				'after_title' => prism_after_title(),
+				),
+			'action_hook'	=> 'prism_widget_area_404_aside',
+			'function'		=> 'prism_404_aside',
+			'priority'		=> 10,
+			)
 		);
 	
 	return apply_filters('prism_widgetized_areas', $prism_widgetized_areas);
@@ -376,6 +391,21 @@ function prism_3rd_subsidiary_aside() {
 		echo prism_before_widget_area('3rd-subsidiary-aside' );
 		dynamic_sidebar( '3rd-subsidiary-aside' );
 		echo prism_after_widget_area( '3rd-subsidiary-aside' );
+	}
+}
+
+
+/**
+ * Displays the 404 Aside Aside
+ *
+ * @uses prism_before_widget_area
+ * @uses prism_after_widget_area
+ */
+function prism_404_aside() {
+	if ( is_active_sidebar( '404-aside' ) ) {
+		echo prism_before_widget_area( '404-aside' );
+		dynamic_sidebar('404-aside');
+		echo prism_after_widget_area( '404-aside' );
 	}
 }
 

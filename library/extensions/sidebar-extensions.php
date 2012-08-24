@@ -89,40 +89,40 @@ function prism_belowmainasides() {
 
 
 /*
- * Index Aside Hooks
+ * 404 Aside Hooks
  */
 
 
 /*	
- * Register action hook: prism_aboveindextop 
+ * Register action hook: prism_above404aside 
  *
- * Located in sidebar-index-top.php
- * Just above the 'index.top' widget area
+ * Located in sidebar-404.php
+ * Just above the '404-aside' widget area
  */
-function prism_aboveindextop() {
-	do_action('prism_aboveindextop');
+function prism_above404aside() {
+	do_action('prism_above404aside');
 }
 
 
 /**
  * Register action hook: widget_area_index_top
  *
- * Located in sidebar.php
- * Regular hook for the 'index.top' widget area
+ * Located in sidebar-404.php
+ * Regular hook for the '404-aside' widget area
  */
 function prism_widget_area_index_top() {
-    do_action('widget_area_index_top');
+    do_action('prism_widget_area_404_aside');
 }
 
 	
 /**
- * Register action hook: prism_belowindextop 
+ * Register action hook: prism_below404aside 
  *
- * Located in sidebar-index-top.php
- * Just below the 'index.top' widget area
+ * Located in sidebar-404.php
+ * Just below the '404-aside' widget area
  */
-function prism_belowindextop() {
-    do_action('prism_belowindextop');
+function prism_below404aside() {
+    do_action('prism_below404aside');
 }
 
 

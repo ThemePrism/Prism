@@ -931,6 +931,8 @@ if ( ! function_exists('prism_404_content') )  {
 			</div><!-- .entry-content -->		
 			
 			<?php prism_search_form( '404' ) ?>
+
+			<?php get_sidebar('404-aside'); ?>
 <?php }
 } // end 404_content
 
