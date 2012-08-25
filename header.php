@@ -67,4 +67,4 @@ prism_create_html();
 			prism_belowheader();
     	?>
     	
-	<div id="main">
+	<div id="main" <?php if( $class = apply_filters( 'prism_markup_class', false, 'main' ) ) echo 'class="'. $class .'"'; ?> >
