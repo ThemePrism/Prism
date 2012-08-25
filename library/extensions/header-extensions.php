@@ -347,7 +347,7 @@ add_action('prism_head','prism_create_pingback', 60);
  */
 function prism_html5_shim() {
   $content = '<!--[if lt IE 9]>';
-  $content .= '<script src="'. get_template_directory_uri(). '/js/html5.js" type="text/javascript"></script>';
+  $content .= '<script src="'. get_template_directory_uri(). '/library/scripts/html5.js" type="text/javascript"></script>';
   $content .= '<![endif]-->' . "\n";
 
     echo apply_filters('prism_html5_shim',$content);
