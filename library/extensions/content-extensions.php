@@ -1263,7 +1263,7 @@ if ( ! function_exists( 'prism_nav_below' ))  {
 		} else { ?>
 
 			<nav id="nav-below" class="navigation">
-                <?php if( ! function_exists( 'wp_pagenavi' )) { ?>
+                <?php if( function_exists( 'wp_pagenavi' )) { ?>
                 <?php wp_pagenavi(); ?>
                 <?php } else { ?>  
 				
