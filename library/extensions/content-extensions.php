@@ -445,6 +445,9 @@ if ( ! function_exists( 'prism_default_loop' ))  {
 						
 						<?php prism_content(); ?>
 
+						<?php wp_link_pages(array('before' => sprintf('<div class="page-link">%s', __('Pages:', 'thematic')),
+													'after' => '</div>')); ?>
+
 					</div><!-- .entry-content -->
 					
 					<?php prism_postfooter(); ?>
