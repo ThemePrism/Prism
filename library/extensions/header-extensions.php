@@ -388,8 +388,9 @@ if ( ! function_exists( 'prism_head_scripts' ) )  {
     	if ( current_theme_supports('prism_superfish') ) {
 
 			wp_enqueue_script('jquery');
-			wp_deregister_script('hoverIntent');
-      wp_enqueue_script('hoverIntent', includes_url('js/hoverIntent.js'), array('jquery'), false, true);
+       wp_enqueue_script('hoverIntent');
+	//		wp_deregister_script('hoverIntent');
+  //    wp_enqueue_script('hoverIntent', includes_url('js/hoverIntent.js'), array('jquery'), false, true);
 			wp_enqueue_script('superfish', $scriptdir . 'superfish.js', array('jquery'), '1.4.8', true);
 			wp_enqueue_script('supersubs', $scriptdir . 'supersubs.js', array('jquery'), '0.2b', true);
 			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', $scriptdir . 'prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
