@@ -371,7 +371,7 @@ if ( ! function_exists( 'prism_head_scripts' ) )  {
      * Adds comment reply and navigation menu scripts to the head of the document.
      *
      * Child themes should use wp_dequeue_scripts to remove individual scripts.
-     * Larger changes can be made using by replacing the pluggable function.
+     * To remove all drop-down scripts, use remove_theme_support('prism_superfish') in your child theme
      *
      * For Reference: {@link http://users.tpg.com.au/j_birch/plugins/superfish/#getting-started Superfish Jquery Plugin}
      *
@@ -384,17 +384,30 @@ if ( ! function_exists( 'prism_head_scripts' ) )  {
     	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) )
 			has_filter( 'prism_show_commentreply' ) ? prism_show_commentreply() : wp_enqueue_script( 'comment-reply' );
 		
-		// load jquery and superfish associated plugins when theme support is active
+		  // load jquery and superfish associated plugins when theme support is active
     	if ( current_theme_supports('prism_superfish') ) {
 
-			wp_enqueue_script('jquery');
-       wp_enqueue_script('hoverIntent');
-	//		wp_deregister_script('hoverIntent');
-  //    wp_enqueue_script('hoverIntent', includes_url('js/hoverIntent.js'), array('jquery'), false, true);
-			wp_enqueue_script('superfish', $scriptdir . 'superfish.js', array('jquery'), '1.4.8', true);
-			wp_enqueue_script('supersubs', $scriptdir . 'supersubs.js', array('jquery'), '0.2b', true);
-			wp_enqueue_script('prism-dropdowns', apply_filters('prism_dropdown_options', $scriptdir . 'prism-dropdowns.js') , array('jquery', 'superfish' ), '1.0', true);
-     	
+  			wp_enqueue_script('jquery');
+        wp_enqueue_script('hoverIntent');
+  			wp_enqueue_script('prism-dropdowns', $scriptdir . 'prism-dropdowns.js', array('jquery'), '1.4.8', true);
+        
+        $dropdown_options = array( 
+                                    'minWidth' =>    12,      // minimum width of sub-menus in em units 
+                                    'maxWidth' =>    27,      // maximum width of sub-menus in em units 
+                                    'extraWidth' =>  1,       // extra width can ensure lines don't sometimes turn over 
+                                                          // due to slight rounding differences and font-family 
+                                    'delay' =>       400,     // delay on mouseout 
+                                    'animation' =>   array( 'opacity' => 'show' , 'height' =>'show' ),    // fade-in and slide-down animation 
+                                    'speed' =>       'fast',  // faster animation speed 
+                                    'autoArrows' =>  true,   // disable generation of arrow mark-up 
+                                    'dropShadows' => false     
+
+        );
+
+        $dropdown_options = apply_filters('prism_dropdown_options', $dropdown_options );
+
+        wp_localize_script( 'prism-dropdowns', 'Prism_Dropdowns', $dropdown_options );
+
      	}
  	}
  }
