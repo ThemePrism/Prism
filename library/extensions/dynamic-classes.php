@@ -68,6 +68,40 @@ if ( ! function_exists( 'prism_date_classes' ) )  {
 	}
 }
 
-// Remember: Prism, like The Sandbox, is for play.
+
+/**
+ * Echos classes for markup where appropriate
+ *
+ * @since 1.0
+ */
+
+function prism_markup_class( $div = null ){
+
+    $classes = prism_get_markup_class( $div );
+    if ( ! empty ( $classes ) ) {  
+        echo 'class="'. join( ' ', $classes ) .'"';
+    }
+
+}
+
+/**
+ * Returns an array of classes for specific divs
+ *
+ * Filter: prism_markup_class
+ *
+ * @since 1.0
+ */
+
+function prism_get_markup_class ( $div ) {
+
+    $classes = array();
+
+    switch ($div) {
+        case 'wrapper':
+            $classes[] = 'hfeed';
+        break;
+    }   
+    return apply_filters ( 'prism_markup_class' , $classes, $div );
+}
 
 ?>
