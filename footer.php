@@ -15,34 +15,32 @@
 			prism_abovemainclose();
 		?>
 		
-		</div><!-- #main -->
+		</section><!-- #main -->
     	
     	<?php
 			// action hook for placing content above the footer
 			prism_abovefooter();
 		
-			// Filter provided for altering output of the footer opening element
-    		echo ( apply_filters( 'prism_open_footer', '<div id="footer">' ) );
-    	?>	
+		?>
+
+			<footer id="footer" <?php prism_markup_class( FALSE, 'footer' ); ?> >
         	
         	<?php
         		// action hook creating the footer 
         		prism_footer();
         	?>
         	
+		</footer><!-- #footer -->
+
 		<?php
-			// Filter provided for altering output of the footer closing element
-    		echo ( apply_filters( 'prism_close_footer', '</div><!-- #footer -->' . "\n" ) );
    
    			// action hook for placing content below the footer
 			prism_belowfooter();
     	?>
     	
+		</div><!-- #wrapper .hfeed -->
+
 	<?php
-		// Filter provided for altering output of wrapping element follows the body tag  
-    	if ( apply_filters( 'prism_close_wrapper', true ) ) 
-    		echo ( '</div><!-- #wrapper .hfeed -->' . "\n" );
-	
 		// calling WordPress' footer action hook
 		wp_footer();
 

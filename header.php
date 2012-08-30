@@ -36,20 +36,15 @@ prism_create_html();
 	// Action hook to place content before opening #wrapper
 	prism_before(); 
 ?>
-	<?php
-		// Filter provided for removing output of wrapping element follows the body tag
-		if ( apply_filters( 'prism_open_wrapper', true ) ) 
-  		  echo ( '<div id="wrapper" class="hfeed">' );
 
+  	<div id="wrapper" <?php prism_markup_class( 'wrapper' ); ?> >
+
+  	<?php
 		// Action hook for placing content above the theme header
 		prism_aboveheader(); 
 	?>
 
-
-		<?php
-			// Filter provided for altering output of the header opening element
-			echo ( apply_filters( 'prism_open_header',  '<header id="site-header">' ) );
-    	?>
+    	<header id="site-header" <?php prism_markup_class( FALSE, 'site-header' ); ?> >
 
 
         	<?php 
@@ -57,14 +52,11 @@ prism_create_html();
 				prism_header();
        		?>
        		
-    	<?php  	
-    		// Filter provided for altering output of the header closing element
-			echo ( apply_filters( 'prism_close_header', '</header><!-- #site-header-->' ) );
-		?>
+    	</header><!-- #site-header-->
 		        
     	<?php
 			// Action hook for placing content below the theme header
 			prism_belowheader();
     	?>
     	
-	<div id="main" <?php if( $class = apply_filters( 'prism_markup_class', false, 'main' ) ) echo 'class="'. $class .'"'; ?> >
+	<section id="main" <?php prism_markup_class( FALSE, 'main' ); ?> >
