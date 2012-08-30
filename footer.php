@@ -23,7 +23,7 @@
 		
 		?>
 
-			<footer id="footer" <?php prism_markup_class( FALSE, 'footer' ); ?> >
+			<footer id="footer" <?php prism_markup_class( 'footer' ); ?> >
         	
         	<?php
         		// action hook creating the footer 
