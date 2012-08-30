@@ -66,19 +66,19 @@ if ( ! function_exists( 'prism_theme_setup' ) ) {
 		define( 'PRISM_LIB',  get_template_directory() .  '/library' );
 
 		// Load required files
-		$required = array ( '/extensions/theme-options.php', // Create Theme Options Page
-							'/extensions/widgets.php', // Load widgets 
-							'/extensions/header-extensions.php', // Load custom header extensions
-							'/extensions/content-extensions.php',  // Load custom content filters
+		$required = array ( 
 							'/extensions/comments-extensions.php',  // Load custom Comments filters
-							'/extensions/discussion-extensions.php',  // Load custom discussion filters
-							'/extensions/widgets-extensions.php',  // Load custom Widgets
+							'/extensions/content-extensions.php',  // Load custom content filters
 							'/extensions/discussion.php',  // Load the Comments Template functions and callbacks
-							'/extensions/sidebar-extensions.php',  // Load custom sidebar hooks
+							'/extensions/discussion-extensions.php',  // Load custom discussion filters
+							'/extensions/dynamic-classes.php',  // Add Dynamic Contextual Classes
 							'/extensions/footer-extensions.php',  // Load custom footer hooks
-							'/extensions/dynamic-classes.php',  // Add Dynamic Contextual Semantic Classes
+							'/extensions/header-extensions.php', // Load custom header extensions
 							'/extensions/helpers.php',  // Need a little help from our helper functions
-							'/extensions/shortcodes.php'  // Load shortcodes
+							'/extensions/sidebar-extensions.php',  // Load custom sidebar hooks						
+							'/extensions/theme-options.php', // Create Theme Options Page				
+							'/extensions/widgets.php', // Load widgets
+							'/extensions/widgets-extensions.php',  // Load custom Widgets
 							);
 
 		foreach ( $required as $require ) {
