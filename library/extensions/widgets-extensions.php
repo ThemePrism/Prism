@@ -33,7 +33,7 @@ function prism_search_form( $id = null ) {
 			$search_form .= '</form>';
 			break;
         case 'search-result':
-            $search_form .= '<form id="noresults-searchform" class="searchform" method="get" action="' . home_url() . '/">';
+            $search_form = '<form id="noresults-searchform" class="searchform" method="get" action="' . home_url() . '/">';
 			$search_form .= '	<div>';
 			$search_form .= '		<input id="noresults-s" class="s" name="s" type="search" value="' . get_search_query() . '" size="' . $search_form_length . '" />';
 			$search_form .= '		<input id="noresults-searchsubmit" class="name="searchsubmit" type="submit" value="' . esc_attr__( 'Find', 'prism' ) . '" />';
@@ -45,7 +45,7 @@ function prism_search_form( $id = null ) {
             $placeholder = __( 'To search, type and hit enter', 'prism' );
 			$placeholder = apply_filters( 'prism_search_field_value',$placeholder );
 
-			$search_form .= '<form class="searchform" method="get" action="' . home_url() .'/">';
+			$search_form = '<form class="searchform" method="get" action="' . home_url() .'/">';
 			$search_form .= '	<div>';
 			$search_form .= '		<input name="s" class="s" type="search" placeholder="' . $placeholder . '" value="' . $placeholder . '" onfocus="if (this.value == \'' . $placeholder . '\') {this.value = \'\';}" onblur="if (this.value == \'\') {this.value = \'' . $placeholder . '\';}" size="'. $search_form_length .'" tabindex="1" />';
 			$search_submit = '		<input class="searchsubmit" name="searchsubmit" type="submit" value="' . __('Search', 'prism') . '" tabindex="2" />';
